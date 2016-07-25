@@ -1,3 +1,6 @@
+//babel-polyfill will emulate a full es2015 enviroment and 
+//is intended to be used in an application rather than a 
+//lib/tool
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
