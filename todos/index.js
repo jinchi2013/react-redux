@@ -10,6 +10,9 @@ import App from './components/App';
 
 let store = createStore(todoApp);
 
+
+//Provider make store={store} avalible for 
+//the component in connect() method
 render(
 	<Provider store={store}>
 		<App />
