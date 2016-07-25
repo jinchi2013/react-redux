@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class Counter extends Component {
 	constructor(props){
-		super{props}
+		super(props)
 		this.incrementAsync = this.incrementAsync.bind(this);
 		this.incrementIfOdd = this.incrementIfOdd.bind(this);
 	}
@@ -14,7 +14,7 @@ class Counter extends Component {
 	}
 
 	incrementAsync(){
-		setTimeout(this.props.onIncrement, 1000)
+		setTimeout(this.props.onIncrement, 1000);
 	}
 
 	render(){
@@ -35,7 +35,7 @@ class Counter extends Component {
 					Increment If Odd
 				</button>
 				{' '}
-				<button>
+				<button onClick={this.incrementAsync}>
 					Increment Async
 				</button>
 			</div>
@@ -44,7 +44,7 @@ class Counter extends Component {
 }
 
 Counter.propTypes = {
-    value: PropTypes.number,isRequired,
+    value: PropTypes.number.isRequired,
     onIncrement: PropTypes.func.isRequired,
     onDecrement: PropTypes.func.isRequired
 }
