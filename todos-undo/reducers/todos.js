@@ -14,11 +14,12 @@ const todo = (state, action) => {
         case 'TOGGLE_TODO':
             if (state.id !== action.id){
                 return state;
-            } else {
-                return Object.assign({}, state, {
-                    completed: !state.completed
-                });
             }
+
+            return Object.assign({}, state, {
+                completed: !state.completed
+            });
+
         default:
             return state;
     }
