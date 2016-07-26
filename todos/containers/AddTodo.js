@@ -20,7 +20,7 @@ let AddTodo = ({dispatch}) => {
 			</form>
 		</div>
 	)
-}
+};
 
 //connect() method connect the component to the <Provider store={store}> 
 AddTodo = connect()(AddTodo);
