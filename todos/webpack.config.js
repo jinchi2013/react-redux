@@ -1,11 +1,11 @@
-const path = require('path');
-const webpack = require('webpack');
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
 		'webpack-hot-middleware/client',
-		'/index'
+		'./index'
 	],
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -17,10 +17,10 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin()
 	],
 	module: {
-		loader: [
+		loaders: [
 			{
 				test: /\.js$/,
-				loader: ['babel'],
+				loaders: ['babel'],
 				exclude:/node_modules/,
 				include: __dirname
 			}

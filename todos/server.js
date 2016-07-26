@@ -7,7 +7,7 @@ const app = new (require('express'))();
 
 const port = 3000;
 
-var compiler = webpack(config);
+const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
 	noInfo: true,
 	publicPath: config.output.publicPath
