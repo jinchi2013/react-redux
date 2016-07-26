@@ -18,4 +18,4 @@ render(
 		<App />
 	</Provider>,
 	document.getELementById('root')
-)
+);
