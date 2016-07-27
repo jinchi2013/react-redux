@@ -34,7 +34,7 @@ ProductItem.propTypes = {
     product: React.PropTypes.shape({
         title: React.PropTypes.string.isRequired,
         price: React.PropTypes.number.isRequired,
-        inventory: React.Proptypes.number.isRequired
+        inventory: React.PropTypes.number.isRequired
     }).isRequired,
     onAddToCartClicked: React.PropTypes.func.isRequired
 };
