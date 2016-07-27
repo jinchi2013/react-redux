@@ -8,7 +8,7 @@ const TIMEOUT = 100;
 export default {
     getProducts(cb, timeout){
         setTimeout(()=>{
-            return cb(_products)
+            cb(_products);
         }, timeout || TIMEOUT);
     },
 
