@@ -15,7 +15,7 @@ const products = ( state, action )=>{
     }
 };
 
-const byId = (state=[], action) => {
+const byId = (state={}, action) => {
     switch (action.type){
         case RECEIVE_PRODUCTS:
             return Object.assign(
@@ -59,6 +59,6 @@ export const getProduct = (state, id) => {
 
 export const getVisibleProducts = (state) => {
     return state.visibleIds.map( (id) => {
-        getProduct(state, id);
+        return getProduct(state, id);
     } );
 };
