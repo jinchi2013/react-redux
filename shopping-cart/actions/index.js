@@ -14,9 +14,9 @@ const receiveProducts = (products) =>{
 export const getAllProducts = () => {
     return(
         (dispatch)=>{
-            shop.getProducts((products) =>{
+            shop.getProducts( (products) =>{
                 dispatch(receiveProducts(products))
-            })
+            } )
         }
     );
 };
