@@ -43,10 +43,11 @@ const fetchPosts = (reddit)=>{
         dispatch(requestPosts(reddit));
         return fetch(`https://www.reddit.com/r/${reddit}.json`).then(
             (response) => {
-                response.json()
+                return response.json();
             }
         ).then(
             (json) => {
+                console.log(json);
                 dispatch(receivePosts(reddit, json))
             }
         );

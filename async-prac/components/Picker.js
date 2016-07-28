@@ -10,7 +10,7 @@ export default class Picker extends React.Component{
             <span>
                 <h1>{value}</h1>
                 <select
-                    onchange={ (e)=>{ onChange(e.target.value) } }
+                    onChange={ (e)=>{ onChange(e.target.value) } }
                     value   ={value}
                 >
                     {
