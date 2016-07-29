@@ -22,7 +22,7 @@ class Explore extends React.Component{
     setInputValue(val) {
         this._input.value = val
     }
-    handlekeyUp(e) {
+    handleKeyUp(e) {
         if(e.keyCode === 13){
             this.handleGoClick()
         }
