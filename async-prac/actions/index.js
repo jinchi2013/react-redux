@@ -43,6 +43,8 @@ const fetchPosts = (reddit)=>{
         dispatch(requestPosts(reddit));
         return fetch(`https://www.reddit.com/r/${reddit}.json`).then(
             (response) => {
+                //the response must return here
+                //so in the next step the data will be availble
                 return response.json();
             }
         ).then(
