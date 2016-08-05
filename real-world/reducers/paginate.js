@@ -25,7 +25,7 @@ function paginate( {types, mapActionToKey} ){
             case requestType:
                 return merge({},state, {isFetching:true});
             case successType:
-                return Object.assgin(
+                return Object.assign(
                     {},
                     state,
                     {
@@ -36,7 +36,7 @@ function paginate( {types, mapActionToKey} ){
                     }
                 );
             case failureType:
-                return Object.assgin(
+                return Object.assign(
                     {},
                     state,
                     {
@@ -55,7 +55,7 @@ function paginate( {types, mapActionToKey} ){
                 if(typeof key !== 'string'){
                     throw new Error('Expected key to be a string')
                 }
-                return Object.assgin(
+                return Object.assign(
                     {},
                     state,
                     {
