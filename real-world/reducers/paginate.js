@@ -23,7 +23,13 @@ function paginate( {types, mapActionToKey} ){
     ){
         switch(action.type){
             case requestType:
-                return merge({},state, {isFetching:true});
+                return Object.assign(
+                    {},
+                    state,
+                    {
+                        isFetching:true
+                    }
+                );
             case successType:
                 return Object.assign(
                     {},
