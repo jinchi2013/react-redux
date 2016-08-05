@@ -2,7 +2,6 @@
  * Created by chi on 8/4/16.
  */
 import * as ActionTypes from '../actions';
-import merge from 'lodash/merge';
 import paginate from './paginate';
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
@@ -10,7 +9,7 @@ import { combineReducers } from 'redux';
 //Updates an entity cache in response to any action with response.entities
 function entities ( state= { users: {}, repos: {} }, action){
     if( action.response && action.response.entities ){
-        return merge(
+        return Object.assign(
             {},
             state,
             action.response.entities

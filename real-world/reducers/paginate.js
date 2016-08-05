@@ -1,7 +1,6 @@
 /**
  * Created by chi on 8/4/16.
  */
-import merge from 'lodash/merge';
 import union from 'lodash/union';
 
 //Creates a reducer managing pagination, given the action types to handle,
@@ -26,7 +25,7 @@ function paginate( {types, mapActionToKey} ){
             case requestType:
                 return merge({},state, {isFetching:true});
             case successType:
-                return merge(
+                return Object.assgin(
                     {},
                     state,
                     {
@@ -37,7 +36,7 @@ function paginate( {types, mapActionToKey} ){
                     }
                 );
             case failureType:
-                return merge(
+                return Object.assgin(
                     {},
                     state,
                     {
@@ -56,7 +55,7 @@ function paginate( {types, mapActionToKey} ){
                 if(typeof key !== 'string'){
                     throw new Error('Expected key to be a string')
                 }
-                return merge(
+                return Object.assgin(
                     {},
                     state,
                     {
