@@ -49,6 +49,8 @@ function paginate( {types, mapActionToKey} ){
                         isFetching: false
                     }
                 );
+            default:
+                return state;
         }
     }
 
@@ -68,6 +70,8 @@ function paginate( {types, mapActionToKey} ){
                         [key]: updatePagination(state[key], action)
                     }
                 );
+            default:
+                return state;
         }
     }
 }
