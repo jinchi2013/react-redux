@@ -121,10 +121,10 @@ export function loadStargazers(fullName, nextPage) {
         } = getState().pagination.stargazersByRepo[fullName] || {}
 
         if (pageCount > 0 && !nextPage) {
-            return null
+            return null;
         }
-        
-        return dispatch(fetchStargazers(fullName, nextPageUrl))
+
+        return dispatch(fetchStargazers(fullName, nextPageUrl));
     }
 }
 
@@ -132,6 +132,7 @@ export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE';
 
 // Resets the currently visible error message.
 export function resetErrorMessage() {
+
     return {
         type: RESET_ERROR_MESSAGE
     }
