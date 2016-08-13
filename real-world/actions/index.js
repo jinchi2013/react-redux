@@ -123,6 +123,7 @@ export function loadStargazers(fullName, nextPage) {
         if (pageCount > 0 && !nextPage) {
             return null
         }
+        
         return dispatch(fetchStargazers(fullName, nextPageUrl))
     }
 }
