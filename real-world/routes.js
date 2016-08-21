@@ -13,7 +13,7 @@ export default (
                 component={RepoPage}
         />
         <Route path="/:login"
-                component={UserPage}/>
-
+                component={UserPage}
+        />
     </Route>
 )
