@@ -1,0 +1,36 @@
+{
+  "name": "new-todos",
+  "version": "1.0.0",
+  "description": "new todo list prac",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CJ",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-register": "^6.18.0",
+    "cross-env": "^3.1.3",
+    "expect": "^1.20.2",
+    "express": "^4.14.0",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.2.0",
+    "node-libs-browser": "^2.0.0",
+    "react-addons-test-utils": "^15.4.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2"
+  }
+}
