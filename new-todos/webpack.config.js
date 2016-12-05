@@ -16,7 +16,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/static/'
     },
-    plugins [
+    plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
