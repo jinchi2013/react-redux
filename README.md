@@ -1,3 +1,3 @@
 # react-redux
 
-Todos and counter is created here from skratch
+react-redux data flow pattern is created here from skratch using ES6, webpack, nodejs
