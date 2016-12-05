@@ -14,3 +14,10 @@ export const toggleTodo = function (id) {
         id
     }
 };
+
+export const setVisibilityFilter = function (filter) {
+    return {
+        type: 'SET_VISIBILITY_FILTER',
+        filter
+    }
+}
