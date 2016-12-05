@@ -20,7 +20,7 @@ let TodoList = function({ todos, onTodoClick }) {
 };
 
 TodoList.propTypes = {
-    todos: React.propTypes.arrayOf(
+    todos: React.PropTypes.arrayOf(
         React.PropTypes.shape({
             id: React.PropTypes.number.isRequired,
             completed: React.PropTypes.bool.isRequired,
