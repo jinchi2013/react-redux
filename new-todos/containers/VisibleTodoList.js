@@ -15,7 +15,7 @@ let getVisibleTodos = function(toDos, filter) {
 
 let mapStateToProps = function(state) {
     return {
-        todos: getVisibleTodos(state.todos, 'SHOW_ALL')
+        todos: getVisibleTodos(state.todos, state.visibilityFilter)
     }
 };
 
