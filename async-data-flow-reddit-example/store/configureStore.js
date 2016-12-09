@@ -19,7 +19,7 @@ const configureStore = (preloadedState)=>{
     if(module.hot) {
         //Enable Webpack hot module replacement for reducer
         module.hot.accept('../reducers', ()=>{
-            let nextRootReducer = require('..reducers').default;
+            let nextRootReducer = require('../reducers').default;
             store.replaceReducer(nextRootReducer);
         });
     }
