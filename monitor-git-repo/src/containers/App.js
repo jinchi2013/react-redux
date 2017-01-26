@@ -8,7 +8,6 @@ class App extends React.Component {
     constructor (props) {
         super(props);
         this.handleDismissClick = this.handleDismissClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
     handleDismissClick (e) {

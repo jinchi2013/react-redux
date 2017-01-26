@@ -5,8 +5,6 @@ const GITHUB_REPO = 'https://github.com/reactjs/redux';
 export default class Explore extends Component {
     constructor (props) {
         super(props);
-        this.handleKeyUp = this.handleKeyUp.bind(this);
-        this.handleGoClick = this.handleGoClick.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
