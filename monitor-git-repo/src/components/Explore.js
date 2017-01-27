@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 const GITHUB_REPO = 'https://github.com/reactjs/redux';
 
-export default class Explore extends Component {
+class Explore extends Component {
     constructor (props) {
         super(props);
     }
@@ -55,3 +55,10 @@ export default class Explore extends Component {
         );
     }
 }
+
+Explore.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+};
+
+export default Explore;
