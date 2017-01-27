@@ -20,4 +20,3 @@ const API_ROOT = 'https://api.github.com';
 
 // Fetches an API response and normalizes the result JSON according to schma.
 // This makes every API response have the same shape, regardless of how nexted it was.
-
