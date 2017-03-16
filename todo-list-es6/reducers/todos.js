@@ -37,3 +37,14 @@ const todos = function(state = [], action) {
 };
 
 export default todos;
+
+export const getVisibleTodos = function(state, filter) {
+    switch(filter) {
+        case 'SHOW_ALL':
+            return state;
+        case 'SHOW_COMPLETED':
+            return state.filter( (t)=>{ return t.completed; } );
+        case 'SHOW_ACTIVE':
+            return state.filter( (t)=>{ return !t.completed; } );
+    }
+};
