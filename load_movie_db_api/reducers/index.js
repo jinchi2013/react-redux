@@ -6,62 +6,45 @@ import {
 } from '../actions';
 
 const initialMoviesState = {
-	isFetching: false,
+	isPending: false,
 	NeedToPull: false,
 	movies: []
 }
 
-const prepareMoives = (state=initialMoviesState, action)=>{
+const movies = (state=initialMoviesState, action)=>{
 	 switch(action.type) {
 	 	case REQUEST_MOVIES:
-	 		return Object.assgin(
+	 		return Object.assign(
 	 				{},
 	 				state,
 	 				{
-	 					isFetching: true,
+	 					isPending: true,
 	 					NeedToPull: false
 	 				}
 	 			)
  		case RECEIVE_MOVIES:
-	 		return Object.assgin(
+	 		return Object.assign(
 	 			{},
 	 			state,
 	 			{
-	 				isFetching: false,
+	 				isPending: false,
 	 				NeedToPull: false,
-	 				movies: action.json,
-	 				lastUpdated: action.receivedAt
+	 				movies: action.movies,
+	 				lastUpdated: action.receiveAt
 	 			}
 	 		)
  		case INVALID_MOVIES:
- 			return Object.assgin(
+ 			return Object.assign(
 	 					{},
 	 					state,
 	 					{
-	 						isFetching: false,
+	 						isPending: false,
 	 						NeedToPull: true
 	 					}
 	 				)
 	 	default: 
 	 		return state;	
 	 }
-}
-
-const movies = (state={}, action) => {
-	switch(action.type) {
-		case INVALID_MOVIES:
-		case REQUEST_MOVIES:
-		case RECEIVE_MOVIES:
-			return Object.assgin(
-				{},
-				state,
-				{
-					moviesList: prepareMoives(state)
-				}
-			)
-		default:
-			 return state;
-	}
 }
 
 const rootReducer = combineReducers({

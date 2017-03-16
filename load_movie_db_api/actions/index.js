@@ -13,9 +13,9 @@ const requestMovies = () => ({
 })
 
 const receiveMoives = (json) => ({
-	"type": RECEIVE_MOVIES,
-	"movies": json.results,
-	"receiveAt": Date.now()
+	type: RECEIVE_MOVIES,
+	movies: json.results,
+	receiveAt: Date.now()
 })
 
 const fetchMoives = () => {
@@ -24,14 +24,13 @@ const fetchMoives = () => {
 		return fetch(`/movies`)
 			.then(
 				(res) => {
-					return res
-						.json()
-						.then(
-							(json) => {
-								console.log(json);
-								dispatch(receiveMoives(json));
-							}
-						)
+					return res.json()
+							.then(
+								(json) => {
+									console.log(json);
+									dispatch(receiveMoives(json));
+								}
+							)
 				}
 			)
 			.catch(
@@ -43,8 +42,8 @@ const fetchMoives = () => {
 }
 
 const shouldPullMovies = (state) => {
-	const movies = state.movies
-	if(!movies) {
+	const movies = state.movies.movies
+	if(movies.length === 0) {
 		return true
 	}
 	if(movies.isPending) {
@@ -55,8 +54,10 @@ const shouldPullMovies = (state) => {
 
 export const fetchMoviesIfNeeded = () => {
 	return (dispatch, getState) => {
+		console.log(getState().movies);
 		if(shouldPullMovies(getState())) {
-			return dispatch(fetchPost(reddit))
+			console.log('pass the condition!');
+			return dispatch(fetchMoives())
 		}
 	}
 }
