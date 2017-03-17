@@ -8,30 +8,18 @@ import { getVisibleProducts } from '../reducers/products';
 import ProductItem from '../components/ProductItem';
 import ProductsList from '../components/ProductsList';
 
-class ProductsContainer extends React.Component{
-    render() {
-        const { products } = this.props;
-        return(
+const ProductsContainer = ({products, addToCart}) => (
             <ProductsList title="Products">
-                {
-                    products.map( (product) => {
-                        return (
-                            <ProductItem
-                                key={product.id}
-                                product={product}
-                                onAddToCartClicked={
-                                    ()=>{
-                                        this.props.addToCart(product.id)
-                                    }
-                                }
-                            />
-                        );
-                    } )
-                }
+                {products.map( (product) => 
+                    <ProductItem
+                        key={product.id}
+                        product={product}
+                        onAddToCartClicked={
+                            ()=> addToCart(product.id)
+                        } />
+                )}
             </ProductsList>
-        );
-    }
-}
+        )
 
 ProductsContainer.propTypes = {
     products: React.PropTypes.arrayOf(
@@ -47,11 +35,9 @@ ProductsContainer.propTypes = {
     addToCart: React.PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state)=>{
-    return {
+const mapStateToProps = (state)=>({
         products: getVisibleProducts(state.products)
-    }
-};
+    })
 
 export default connect(
     mapStateToProps,
