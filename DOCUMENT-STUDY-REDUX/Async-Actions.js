@@ -45,6 +45,7 @@ export const fetchPostsFail = (error) => {
 	error: error
 }
 
+
 /**
 	See below for detail
 
