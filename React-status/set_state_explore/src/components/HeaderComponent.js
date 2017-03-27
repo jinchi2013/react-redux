@@ -37,11 +37,11 @@ class HeaderComponent extends Component {
 			},
 			activeButtonsStyle: {
 				backgroundColor: this.state.todayPanel ? "rgb(236, 236, 236)" : "rgb(144, 144, 144)",
-				color: this.state.todayPanel ? "black" : "white",
+				color: this.state.todayPanel ? "rgb(47, 47, 47)" : "rgb(242, 242, 239)",
 			},
 			inactiveButtonsStyle: {
 				backgroundColor: this.state.todayPanel ? "rgb(144, 144, 144)" : "rgb(236, 236, 236)",
-				color: this.state.todayPanel ? "white" : "black",
+				color: this.state.todayPanel ? "rgb(242, 242, 239)" : "rgb(47, 47, 47)",
 			}
 		}
 
