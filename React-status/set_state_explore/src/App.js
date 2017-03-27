@@ -13,6 +13,7 @@ class App extends Component {
         </header>
         <main>
           <DateComponent />
+
         </main>
       </div>
     );
@@ -24,11 +25,22 @@ export default App
 
 // 
 //         <main>
-//           <CalenderComponent />
-//           <StockList />
-//           <WeatherReport />
-//           <TomorrowSchedule />
+//           <FeatureCards/>
+//           <Notification />
 //         </main>
 //         <footer>
 //           <copyRight/>
 //         </footer>
+
+/**
+    Under FeatureCards
+
+           <CalenderComponent />
+           <StockList />
+           <WeatherReport />
+           <TomorrowSchedule />
+
+    Under Notification
+          <NotificationList />
+
+*/
