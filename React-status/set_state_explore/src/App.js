@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HeaderComponent from './components/HeaderComponent'
+import DateComponent from './components/DateComponent'
 
 
 class App extends Component {
@@ -9,9 +10,10 @@ class App extends Component {
       <div className="App" >
         <header>
           <HeaderComponent buttons={this.props.json.headerButton} />
-          
         </header>
-        
+        <main>
+          <DateComponent />
+        </main>
       </div>
     );
   }
@@ -20,8 +22,8 @@ class App extends Component {
 export default App
 
 
-// <DateComponent />
-// <main>
+// 
+//         <main>
 //           <CalenderComponent />
 //           <StockList />
 //           <WeatherReport />
