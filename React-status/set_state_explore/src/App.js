@@ -12,8 +12,7 @@ class App extends Component {
           <HeaderComponent buttons={this.props.json.headerButton} />
         </header>
         <main>
-          <DateComponent />
-
+          <DateComponent date={this.props.json.date} />
         </main>
       </div>
     );
