@@ -158,3 +158,52 @@ export default DatagridBody;
 
 */
 
+/**
+    ABOUT OBJECT LITERALS IN JSX
+*/
+
+/*
+    In fact, each time you pass an object literal as prop to a child component, 
+    you break purity
+
+*/
+
+import React from 'react';
+import MyTableComponent from './MyTableComponent';
+const Datagrid = (props) => (
+    <MyTableComponent style={{ marginTop: 10 }}>
+        ...
+    </MyTableComponent>
+)
+
+/*
+    The following will be better
+*/
+
+import React from 'react';
+import MyTableComponent from './MyTableComponent';
+
+const tableStyle = { marginTop: 10 };
+const Datagrid = (props) => (
+    <MyTableComponent style={tableStyle}>
+        ...
+    </MyTableComponent>
+)
+
+/*
+    Another usual suspect for hijacking pure components is React.cloneElement(). 
+    If you pass a prop by value as second parameter, 
+    the cloned element will receive new props at every render.
+*/
+
+// bad
+const MyComponent = (props) =>
+    <div>{React.cloneElement(Foo, { bar: 1 })}</div>;
+// good
+const additionalProps = { bar: 1 };
+const MyComponent = (props) =>
+    <div>{React.cloneElement(Foo, additionalProps)}</div>;
+
+
+
+
