@@ -11,12 +11,11 @@ class HeaderComponent extends Component {
 	}
 
 	_togglePanel(e) {
-		//console.log(e.target.getAttribute('data-id'));
 		let activePanel = e.target.getAttribute('data-id')
 
 		if(activePanel !== this.state.activePanel) {
-			this.setState(()=> ({
-				todayPanel: !this.state.todayPanel,
+			this.setState((state)=> ({
+				todayPanel: !state.todayPanel,
 				activePanel: activePanel
 			}))
 		}
@@ -35,11 +34,11 @@ class HeaderComponent extends Component {
 				border: "0.1px solid transparent",
 				borderRadius: 3
 			},
-			activeButtonsStyle: {
+			todayButtonsStyle: {
 				backgroundColor: this.state.todayPanel ? "rgb(236, 236, 236)" : "rgb(144, 144, 144)",
 				color: this.state.todayPanel ? "rgb(47, 47, 47)" : "rgb(242, 242, 239)",
 			},
-			inactiveButtonsStyle: {
+			notifyButtonsStyle: {
 				backgroundColor: this.state.todayPanel ? "rgb(144, 144, 144)" : "rgb(236, 236, 236)",
 				color: this.state.todayPanel ? "rgb(242, 242, 239)" : "rgb(47, 47, 47)",
 			}
@@ -52,12 +51,12 @@ class HeaderComponent extends Component {
 				if(button === 'Today') {
 					buttonsStyle = {
 						...style.basicButtonsStyle,
-						...style.activeButtonsStyle
+						...style.todayButtonsStyle
 					}
 				} else {
 					buttonsStyle = {
 						...style.basicButtonsStyle,
-						...style.inactiveButtonsStyle
+						...style.notifyButtonsStyle
 					}	
 				}
 
