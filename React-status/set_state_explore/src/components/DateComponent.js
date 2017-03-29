@@ -31,6 +31,12 @@ class DateComponent extends Component {
 	}
 
 	render () {
+		const containerStyle = {
+			padding: 30,
+			fontSize: 25,
+			fontFamily: 'cursive'
+		}
+
 		const {
 			weekDayList,
 			monthsList
@@ -40,7 +46,7 @@ class DateComponent extends Component {
 		const date = this.state.dateObj.getDate()
 
 		return (
-			<div>
+			<div style={containerStyle}> 
 				<WeekDayComponent weekDay={weekDayList[weekDayIndex]} />
 				<MonthDateComponent month={monthsList[monthIndex]} date={date} />
 			</div>
