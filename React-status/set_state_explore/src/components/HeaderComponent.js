@@ -25,7 +25,6 @@ class HeaderComponent extends Component {
 		const style = {
 			headerStyle: {
 				textAlign: "center",
-				backgroundColor: "rgb(186, 186, 186)",
 				padding: 10,
 				borderBottom: "2px solid rgb(123, 123, 123)"
 			},
