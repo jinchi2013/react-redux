@@ -11,14 +11,19 @@ class App extends Component {
       backgroundColor: "rgb(186, 186, 186)"
     }
 
+    const { 
+      date,
+      featureCards
+     } = this.props.json
+
     return (
       <div className="App" style={appStyle}>
         <header>
-          <HeaderComponent buttons={this.props.json.headerButton} />
+          <HeaderComponent buttons={featureCards.headerButton} />
         </header>
         <main>
-          <DateComponent date={this.props.json.date} />
-          <FeatureCardsComponent />
+          <DateComponent date={date} />
+          <FeatureCardsComponent featureCards={featureCards} />
         </main>
       </div>
     );

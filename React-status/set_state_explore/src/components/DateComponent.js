@@ -20,8 +20,8 @@ class DateComponent extends Component {
 			const newDateObj = new Date()
 			this.setState((state)=>{
 				if(state.dateObj.getDay() !== newDateObj.getDay()
-					|| state.dateObj.getDate() !== newDateObj.getDate()) 
-				{
+				   || state.dateObj.getDate() !== newDateObj.getDate()) {
+
 					return {
 						dateObj: newDateObj	
 					}
@@ -32,7 +32,7 @@ class DateComponent extends Component {
 
 	render () {
 		const containerStyle = {
-			padding: 30,
+			padding: '30px 30px 20px 30px',
 			fontSize: 25,
 			fontFamily: 'cursive'
 		}
