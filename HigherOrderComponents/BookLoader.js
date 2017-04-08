@@ -1,6 +1,10 @@
 import react, { Component } from 'react'
 import bookJson from './bookJson'
 
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
 const loadBook = () => (WrappedComponent) => {
 	class BookLoader extends Component {
 		constructor(props) {

@@ -188,13 +188,54 @@ export default withSubscription()(
 /*
 	Never mutate the Original Component.
 	HOC use composition, by wrapping the input component
+	To maximizing Composability
+
+	the redux 's compose method is a choose for simply the composition
 */
 
+/* 
+	Compose will pass the return of first function as param into the second function
+*/
 
+compose(
+  withSubscriptionA(),
+  withSubscriptionB(config),
+  withSubscriptionC()
+)(
+	CommentList,
+	(DataSource) => DataSource.getComments()
+);
 
+/*
+	Static Methods of the WrappedComponent
+*/
 
+// Define a static method
+WrappedComponent.staticMethod = function() {}
 
+// Now apply an HOC
+const EnhancedComponent = enhance(WrappedComponent)
 
+// the enhanced component has no static method
+typeof EnhancedComponent.staticMethod === 'undefined' // => true
+
+// To solve this, you conld copy the methods onto the container before returning it
+function enhance(WrappedComponent) {
+  class Enhance extends React.Component {/*...*/}
+  // Must know exactly which method(s) to copy :(
+  Enhance.staticMethod = WrappedComponent.staticMethod;
+  return Enhance;
+}
+
+// you can use hoist-non-react-statics to automatically copy all 
+// non-React static methods
+
+import hoistNonReactStatic from 'hoist-non-react-statics';
+function enhance(WrappedComponent) {
+  class Enhance extends React.Component {/*...*/}
+  hoistNonReactStatic(Enhance, WrappedComponent);
+  return Enhance;
+}
 
 
 
