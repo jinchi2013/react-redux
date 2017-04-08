@@ -236,17 +236,3 @@ function enhance(WrappedComponent) {
   hoistNonReactStatic(Enhance, WrappedComponent);
   return Enhance;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
