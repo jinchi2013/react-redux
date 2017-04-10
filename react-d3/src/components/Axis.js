@@ -16,7 +16,6 @@ class Axis extends Component {
 
   renderAxis() {
     let node  = this.axis
-    console.log(node)
     let axis = this.props.orient === 'bottom' ? d3.axisBottom(this.props.scale) : d3.axisLeft(this.props.scale)
     d3.select(node).call(axis);
   }
