@@ -34,7 +34,7 @@ class Chart extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Playing With React and D3</h1>
+				<h1>React and D3</h1>
 				<ScatterPlot {...this.state} {...styles} />
 				<div className='controls'>
 					<button className='btn randomize' onClick={()=> this.randomizeData()}>
