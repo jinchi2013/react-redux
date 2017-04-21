@@ -7,7 +7,7 @@ import reducers from './reducers'
 import * as fromMiddleware from './middlewares'
 import './index.css'
 
-const middleware = [fromMiddleware.logger]
+const middleware = [fromMiddleware.timeoutScheduler, fromMiddleware.logger]
 
 const store = createStore(
 	reducers,

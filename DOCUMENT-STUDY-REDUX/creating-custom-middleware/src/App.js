@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { middlewareAction } from './actions'
+import { middlewareAction, metaDelay } from './actions'
+//import { timeoutScheduler } from './middlewares'
 
 import logo from './logo.svg'
 import './App.css'
@@ -11,7 +12,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.middlewareAction()
+    //this.props.middlewareAction()
+    const cancel = this.props.metaDelay()
+    cancel() // this will cancel the settimeout function, action type will distinguish the function returned
   }
 
   render() {
@@ -39,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps, 
-  { middlewareAction }
+  { middlewareAction, metaDelay }
 )(App)

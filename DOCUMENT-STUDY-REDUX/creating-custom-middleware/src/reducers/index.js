@@ -6,6 +6,10 @@ const middlewareState = (state={text: 'init'}, action) => {
 			return {
 				text: 'this is test msg!!!'
 			}
+		case 'METADELAY' :
+			return {
+				text: 'meta delay tryout'
+			}
 		default:
 			return state
 	}
