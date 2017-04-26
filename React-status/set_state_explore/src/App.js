@@ -26,7 +26,7 @@ class App extends Component {
           <FeatureCardsComponent featureCards={featureCards} />
         </main>
       </div>
-    );
+    )
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import StockCantainer from '../containers/StockCantainer'
 import CalendarComponent from './CalendarComponent'
 
 
@@ -19,6 +20,7 @@ const FeatureCards = (props)=>{
 	return (
 		<div style={style.container}>
 			<CalendarComponent calendar={calendar} />
+			<StockCantainer stocks={stock} />
 		</div>
 	)
 }

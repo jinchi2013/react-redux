@@ -10,30 +10,35 @@ const json = {
 			'Notifications'
 		],
 		stock: [
-			"1": {
+			{
 				name: 'NASDAQ',
 				val: 5828.74,
-				status: '+0.19%'
+				status: '+0.19%',
+				id: '1'
 			},
-			"2": {
+			{
 				name: 'NYSE',
 				val: 11418.89,
-				status: '-0.11%'
+				status: '-0.11%',
+				id: '2'
 			},
-			"3": {
+			{
 				name: 'DOW J',
 				val: 20596.72,
-				status: '-0.29%'
+				status: '-0.29%',
+				id: '3'
 			},
-			"4": {
+			{
 				name: 'AAPL',
 				val: 140.74,
-				status: '-0.20%'
+				status: '-0.20%',
+				id: '4'
 			},
-			"5": {
+			{
 				name: 'SBUX',
 				val: 56.81,
-				status: '+1.72%'
+				status: '+1.72%',
+				id: '5'
 			}
 		],
 		weather:[
@@ -44,7 +49,7 @@ const json = {
 			},
 			"2": {
 				city: 'New Jersey',
-				temperatur: 36,
+				temperature: 36,
 				unit: 'fahrenheit'
 			}
 		],

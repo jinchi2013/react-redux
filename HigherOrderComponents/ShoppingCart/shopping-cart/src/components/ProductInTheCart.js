@@ -16,7 +16,8 @@ const ProductInTheCart = ({addedProduct, removeProductInCart, decreaseProductQua
 			width: '35%',
 
 			toggleQuanButton: {
-				fontSize: 15
+				fontSize: 10,
+				margin: 5
 			}
 		},
 		imgContainer: {
@@ -31,7 +32,8 @@ const ProductInTheCart = ({addedProduct, removeProductInCart, decreaseProductQua
 			width: '100%',
 			backgroundColor: '#e65d4f',
 			border: 0,
-			color: 'white'
+			color: 'white',
+			marginTop: 5
 		}
 	}
 
