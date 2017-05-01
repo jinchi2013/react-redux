@@ -1,7 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
 const json = {
 	featureCards: {
@@ -13,31 +12,31 @@ const json = {
 			{
 				name: 'NASDAQ',
 				val: 5828.74,
-				status: '+0.19%',
+				status: +0.19,
 				id: '1'
 			},
 			{
 				name: 'NYSE',
 				val: 11418.89,
-				status: '-0.11%',
+				status: -0.11,
 				id: '2'
 			},
 			{
 				name: 'DOW J',
 				val: 20596.72,
-				status: '-0.29%',
+				status: -0.29,
 				id: '3'
 			},
 			{
 				name: 'AAPL',
 				val: 140.74,
-				status: '-0.20%',
+				status: -0.20,
 				id: '4'
 			},
 			{
 				name: 'SBUX',
 				val: 56.81,
-				status: '+1.72%',
+				status: +1.72,
 				id: '5'
 			}
 		],

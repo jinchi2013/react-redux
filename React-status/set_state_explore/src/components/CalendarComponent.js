@@ -33,7 +33,7 @@ const CalendarComponent = (props) => {
 	} = props
 
 	return (
-		<div style={style.calendarContainer}>
+		<section style={style.calendarContainer}>
 			<div style={style.calendarTitle}>
 				<span style={style.calendarIcon}></span>
 				<span>Calendar</span>
@@ -45,7 +45,7 @@ const CalendarComponent = (props) => {
 						<li></li>
 				}
 			</ul>
-		</div>
+		</section>
 	)
 }
 

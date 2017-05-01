@@ -73,11 +73,11 @@ class HeaderComponent extends Component {
 		)
 
 		return (
-				<div style={style.headerStyle}>
+				<section style={style.headerStyle}>
 					{ toggleButtons }
-				</div>
+				</section>
 			)
 	}
 }
 
-export default HeaderComponent;
+export default HeaderComponent

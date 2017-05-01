@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import StockCantainer from '../containers/StockCantainer'
 import CalendarComponent from './CalendarComponent'
 
@@ -12,9 +12,7 @@ const FeatureCards = (props)=>{
 
 	const {
 		stock,
-		weather,
-		calendar,
-		tomorrow
+		calendar
 	} = props.featureCards
 
 	return (

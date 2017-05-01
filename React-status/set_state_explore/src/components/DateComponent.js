@@ -46,10 +46,10 @@ class DateComponent extends Component {
 		const date = this.state.dateObj.getDate()
 
 		return (
-			<div style={containerStyle}> 
+			<section style={containerStyle}> 
 				<WeekDayComponent weekDay={weekDayList[weekDayIndex]} />
 				<MonthDateComponent month={monthsList[monthIndex]} date={date} />
-			</div>
+			</section>
 		)
 	}
 }
