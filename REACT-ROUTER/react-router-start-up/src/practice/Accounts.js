@@ -1,9 +1,15 @@
 import React from 'react'
 import {
-	BrowserRouter as Router,
 	Route,
 	Link
 } from 'react-router-dom'
+
+
+const Child = ({match}) => (
+		<div>
+			<h3>ID: {match.params.id}</h3>
+		</div>
+	)
 
 const ParamsPractice = ({match})=>(
 		<nav>
@@ -17,12 +23,6 @@ const ParamsPractice = ({match})=>(
 
 			<Route path={`${match.url}/:id`} component={Child} />
 		</nav>
-	)
-
-const Child = ({match}) => (
-		<div>
-			<h3>ID: {match.params.id}</h3>
-		</div>
 	)
 
 export default ParamsPractice
