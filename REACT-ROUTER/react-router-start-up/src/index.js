@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import BasicExample from './practice/BasicRouter'
+import BasicRouter from './practice/BasicRouter'
 
 ReactDOM.render(
-	<BasicExample />,
+	<BasicRouter />,
 	document.getElementById('root')
 )

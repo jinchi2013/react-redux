@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
 	BrowserRouter as Router,
 	Route,
@@ -7,6 +7,9 @@ import {
 
 import Accounts from './Accounts'
 import Topics from '../components/Topics'
+import AuthPractice from './AuthPractice'
+
+import Login from '../components/Login'
 
 const Home = () => (
 		<nav>
@@ -14,30 +17,30 @@ const Home = () => (
 		</nav>
 	)
 
-const About = ()=>(
-		<nav>
-			<h2>About</h2>
-		</nav>
-	)
+class BasicRouter extends Component {
+	render() {
+		return (
+			<Router>
+				<div>
+					<ul>
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/topics">Topics</Link></li>
+						<li><Link to="/accounts">Accounts</Link></li>
+						<li><Link to="/AuthPractice">Authentication Practice</Link></li>
+					</ul>
 
-const BasicExample = ()=>(
-		<Router>
-			<div>
-				<ul>
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/about">About</Link></li>
-					<li><Link to="/topics">Topics</Link></li>
-					<li><Link to="/accounts">Accounts</Link></li>
-				</ul>
+					<hr/>
 
-				<hr/>
+					<Route exact path="/" component={Home} />
+					<Route path="/topics" component={Topics} />
+					<Route path="/accounts" component={Accounts} />
+					<Route path="/AuthPractice" component={AuthPractice} />
 
-				<Route exact path="/" component={Home} />
-				<Route path="/about" component={About} />
-				<Route path="/topics" component={Topics} />
-				<Route path="/accounts" component={Accounts} />
-			</div>
-		</Router>
-	)
+					<Route path="/login" component={Login}/>
+				</div>
+			</Router>
+		)
+	}
+}
 
-export default BasicExample
+export default BasicRouter
