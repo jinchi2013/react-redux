@@ -6,7 +6,7 @@ import {
   withRouter
 } from 'react-router-dom'
 
-const AuthButton = withRouter(({ history }) => (
+const AuthButton = withRouter( ({ history }) => (
   window.localStorage.getItem('auth') === 'true' ? (
     <p>
       Welcome! <button onClick={() => {
@@ -19,7 +19,7 @@ const AuthButton = withRouter(({ history }) => (
   ) : (
     <p>You are not logged in.</p>
   )
-))
+) )
 
 const PrivateRoute = ({ component: Component, object, ...rest }) => {
   return(
