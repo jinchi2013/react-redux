@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     const appStyle = {
       backgroundColor: "rgb(186, 186, 186)",
-      width: 400
+      width: 350
     }
 
     const { 
