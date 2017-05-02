@@ -1,6 +1,6 @@
 import React from 'react'
-import StockCantainer from '../containers/StockCantainer'
-import CalendarComponent from './CalendarComponent'
+import StockCantainer from './StockCantainer'
+import CalendarComponent from '../components/CalendarComponent'
 
 
 const FeatureCards = (props)=>{
@@ -16,10 +16,10 @@ const FeatureCards = (props)=>{
 	} = props.featureCards
 
 	return (
-		<div style={style.container}>
+		<section style={style.container}>
 			<CalendarComponent calendar={calendar} />
 			<StockCantainer stocks={stock} />
-		</div>
+		</section>
 	)
 }
 

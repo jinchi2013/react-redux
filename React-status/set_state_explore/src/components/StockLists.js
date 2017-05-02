@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import FilterSearch from './FilterSearch'
+import FilterSearch from './StockTable/FilterSearch'
 import StockTitleRow from './StockTable/StockTitleRow'
 import StockDetailRow from './StockTable/StockDetailRow'
 
@@ -7,10 +7,11 @@ class StockLists extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stocks: this.props.stocks
+			stocks: this.props.stocks,
 		}
 
 		this._sortStockList = this._sortStockList.bind(this)
+		this._filterStockList = this._filterStockList.bind(this)
 	}
 
 	_sortNumber(sortParam) {
@@ -50,7 +51,7 @@ class StockLists extends Component {
 
 		if(typeof stocksArrayCopy[0][sortParam] === 'number') {
 			this._sortNumber(sortParam)
-			
+
 		} else if (typeof stocksArrayCopy[0][sortParam] === 'string') {
 			this._sortString(sortParam)
 		}
@@ -59,6 +60,15 @@ class StockLists extends Component {
 	_sortStockList(e) {
 		const sortField = e.target.getAttribute('data-sort')
 		this._sortingStockTable(sortField)
+	}
+
+	_filterStockList(param, field) {
+		const currentArray = this.props.stocks.slice(0)
+		console.log(param)
+
+		this.setState({
+			stocks: currentArray.filter( stock => stock[field].toString().toLowerCase().indexOf(param) > -1 )
+		})
 	}
 
 	render() {
@@ -76,6 +86,7 @@ class StockLists extends Component {
 
 		return (
 			<section>
+				<FilterSearch  _filterStockList={this._filterStockList} fields={ Object.keys(this.props.stocks[0]) } />
 				<table style={style.table}>
 					<thead>
 						<StockTitleRow _sortStockList={this._sortStockList}>
@@ -88,7 +99,7 @@ class StockLists extends Component {
 					<tbody style={style.table.tbody}>
 						{
 							stocks.map( stock => <StockDetailRow key={stock.id} stock={stock} /> )
-						}	
+						}
 					</tbody>
 				</table>
 			</section>
@@ -97,5 +108,3 @@ class StockLists extends Component {
 }
 
 export default StockLists
-
-// <FilterSearch />

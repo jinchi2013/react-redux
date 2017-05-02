@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HeaderComponent from './components/HeaderComponent'
 import DateComponent from './components/DateComponent'
-import FeatureCardsComponent from './components/FeatureCardsComponent'
+import FeatureCardsComponent from './containers/FeatureCardsComponent'
 
 
 class App extends Component {
@@ -9,10 +9,10 @@ class App extends Component {
   render() {
     const appStyle = {
       backgroundColor: "rgb(186, 186, 186)",
-      width: 350
+      margin: 'auto'
     }
 
-    const { 
+    const {
       date,
       featureCards
      } = this.props.json
@@ -34,7 +34,7 @@ class App extends Component {
 export default App
 
 
-// 
+//
 //         <main>
 //           <FeatureCards/>
 //           <Notification />
