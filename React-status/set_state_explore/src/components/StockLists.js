@@ -7,7 +7,7 @@ class StockLists extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stocks: this.props.stocks,
+			stocks: this.props.stocks
 		}
 
 		this._sortStockList = this._sortStockList.bind(this)
@@ -63,7 +63,7 @@ class StockLists extends Component {
 	}
 
 	_isAllFieldsInFilterStateFalse() {
-		return Object.keys(this.props.filterState).filter( state => this.props.filterState[state] === true ).length === 0
+		return Object.keys(this.state.filterState).filter( state => this.props.filterState[state] === true ).length === 0
 	}
 
 	_setStockState(stocks, param, field) {

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { getHeaderButtons } from '../reducers/stocks'
 
 class HeaderComponent extends Component {
 	constructor(props) {
@@ -43,41 +46,54 @@ class HeaderComponent extends Component {
 			}
 		}
 
-		const { buttons } = this.props
+		const { buttons, isRequesting } = this.props
 		const toggleButtons = buttons.map( (button, index)=>{
-				let buttonsStyle
+			let buttonsStyle
 
-				if(button === 'Today') {
-					buttonsStyle = {
-						...style.basicButtonsStyle,
-						...style.todayButtonsStyle
-					}
-				} else {
-					buttonsStyle = {
-						...style.basicButtonsStyle,
-						...style.notifyButtonsStyle
-					}	
+			if(button === 'Today') {
+				buttonsStyle = {
+					...style.basicButtonsStyle,
+					...style.todayButtonsStyle
 				}
-
-				return (
-							<button onClick={this._togglePanel} 
-							    key={index}
-							    style={buttonsStyle}
-							    data-id={button}
-						 	>
-							 {button}
-						 	</button>
-						)
+			} else {
+				buttonsStyle = {
+					...style.basicButtonsStyle,
+					...style.notifyButtonsStyle
+				}	
 			}
-									
-		)
+
+			return (
+						<button onClick={this._togglePanel} 
+						    key={index}
+						    style={buttonsStyle}
+						    data-id={button}
+					 	>
+						 {button}
+					 	</button>
+					)
+		})
 
 		return (
 				<section style={style.headerStyle}>
-					{ toggleButtons }
+					{  
+						isRequesting ? 'loading...' : toggleButtons
+					}
 				</section>
 			)
 	}
 }
 
-export default HeaderComponent
+const mapStateToProps = (state) => {
+	const {
+		isRequesting
+	} = state.stocks
+
+	return {
+		buttons: getHeaderButtons(state.stocks),
+		isRequesting
+	}
+}
+
+export default connect(
+	mapStateToProps
+)(HeaderComponent)

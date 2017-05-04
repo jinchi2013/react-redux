@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HeaderComponent from './components/HeaderComponent'
-import DateComponent from './components/DateComponent'
-import FeatureCardsComponent from './containers/FeatureCardsComponent'
+//import DateComponent from './components/DateComponent'
+//import FeatureCardsComponent from './containers/FeatureCardsComponent'
 
 
 class App extends Component {
@@ -12,20 +12,11 @@ class App extends Component {
       margin: 'auto'
     }
 
-    const {
-      date,
-      featureCards
-     } = this.props.json
-
     return (
       <div className="App" style={appStyle}>
         <header>
-          <HeaderComponent buttons={featureCards.headerButton} />
+          <HeaderComponent />
         </header>
-        <main>
-          <DateComponent date={date} />
-          <FeatureCardsComponent featureCards={featureCards} />
-        </main>
       </div>
     )
   }
@@ -33,6 +24,10 @@ class App extends Component {
 
 export default App
 
+//        <main>
+  //        <DateComponent />
+    //      <FeatureCardsComponent />
+     //   </main>
 
 //
 //         <main>
