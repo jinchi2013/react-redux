@@ -40,6 +40,7 @@ const json = {
 				id: '5'
 			}
 		],
+		stockOrder: ['id', 'name', 'val', 'status'],
 		weather:[
 			"1": {
 				city: 'New York',

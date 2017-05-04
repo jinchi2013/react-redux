@@ -1,14 +1,20 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 
-const StockDetailRow = ({stock}) => {
-	return (
-		<tr>
-			<td>{stock.id}</td>
-			<td>{stock.name}</td>
-			<td>{stock.val}</td>
-			<td>{stock.status > 0 ? `+${stock.status}%` : `${stock.status}%`}</td>
-		</tr>
-	)
+class StockDetailRow extends PureComponent {
+	render() {
+		const {
+			stock
+		} = this.props
+
+		return (
+				<tr>
+					<td>{stock.id}</td>
+					<td>{stock.name}</td>
+					<td>{stock.val}</td>
+					<td>{stock.status > 0 ? `+${stock.status}%` : `${stock.status}%`}</td>
+				</tr>
+			)
+	}
 }
 
 export default StockDetailRow

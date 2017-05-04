@@ -62,13 +62,24 @@ class StockLists extends Component {
 		this._sortingStockTable(sortField)
 	}
 
-	_filterStockList(param, field) {
-		const currentArray = this.props.stocks.slice(0)
-		console.log(param)
+	_isAllFieldsInFilterStateFalse() {
+		return Object.keys(this.props.filterState).filter( state => this.props.filterState[state] === true ).length === 0
+	}
 
+	_setStockState(stocks, param, field) {
 		this.setState({
-			stocks: currentArray.filter( stock => stock[field].toString().toLowerCase().indexOf(param) > -1 )
+			stocks: stocks.filter( stock => stock[field].toString().indexOf(param.toUpperCase()) > -1 )
 		})
+	}
+
+	_filterStockList(param, field) {
+		if(this._isAllFieldsInFilterStateFalse()) {
+			const wholeArray = this.props.stocks.slice(0)
+			this._setStockState(wholeArray, param, field)
+		} else {
+			const currentArray = this.state.stocks.slice(0)
+			this._setStockState(currentArray, param, field)
+		}
 	}
 
 	render() {
@@ -83,10 +94,11 @@ class StockLists extends Component {
 		}
 
 		const { stocks } = this.state
+		const { stockOrder } = this.props
 
 		return (
 			<section>
-				<FilterSearch  _filterStockList={this._filterStockList} fields={ Object.keys(this.props.stocks[0]) } />
+				<FilterSearch  _filterStockList={this._filterStockList} fields={ stockOrder } />
 				<table style={style.table}>
 					<thead>
 						<StockTitleRow _sortStockList={this._sortStockList}>

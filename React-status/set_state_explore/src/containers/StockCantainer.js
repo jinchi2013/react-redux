@@ -5,6 +5,15 @@ import stockMarketIcon from '../image/stock-market.png'
 
 class StockCantainer extends Component {
 
+	state = {
+		filterState: {
+			id: false,
+			name: false,
+			val: false,
+			status: false
+		}
+	}
+
 	render(){
 		const style = {
 			stockContainer: {
@@ -33,8 +42,13 @@ class StockCantainer extends Component {
 		}
 
 		const {
-			stocks
+			stocks, 
+			stockOrder
 		} = this.props
+
+		const {
+			filterState
+		} = this.state
 
 		return (
 			<div style={style.stockContainer}>
@@ -45,7 +59,7 @@ class StockCantainer extends Component {
 				{
 					stocks.length === 0 ? 
 						<h4>No Stocks Data</h4> :
-						<StockLists stocks={stocks} />
+						<StockLists stocks={stocks} stockOrder={stockOrder} filterState={filterState} />
 				}
 			</div>
 		)

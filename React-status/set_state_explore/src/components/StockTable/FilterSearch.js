@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import FilterInput from './FilterInput'
 
 class FilterSearch extends PureComponent {
   constructor(props) {
@@ -18,7 +19,9 @@ class FilterSearch extends PureComponent {
     return (
       <div>
         {
-          fields.map( (field, index) => <input key={index} name={field} onChange={this._handleInputChange} /> )
+          fields.map( (field, index) => (
+              <FilterInput key={index} field={field} _handleInputChange={this._handleInputChange} />
+            ) )
         }
       </div>
     )

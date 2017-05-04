@@ -12,13 +12,14 @@ const FeatureCards = (props)=>{
 
 	const {
 		stock,
-		calendar
+		calendar,
+		stockOrder
 	} = props.featureCards
 
 	return (
 		<section style={style.container}>
 			<CalendarComponent calendar={calendar} />
-			<StockCantainer stocks={stock} />
+			<StockCantainer stocks={stock} stockOrder={stockOrder} />
 		</section>
 	)
 }
