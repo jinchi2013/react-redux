@@ -28,9 +28,8 @@ class App extends Component {
 export default App
 
 //        <main>
-  //        <DateComponent />
     //      <FeatureCardsComponent />
-     //   </main>
+     //   </main>xs
 
 //
 //         <main>
