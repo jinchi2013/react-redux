@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HeaderComponent from './components/HeaderComponent'
-//import DateComponent from './components/DateComponent'
+import DateComponent from './components/DateComponent'
 //import FeatureCardsComponent from './containers/FeatureCardsComponent'
 
 
@@ -17,6 +17,9 @@ class App extends Component {
         <header>
           <HeaderComponent />
         </header>
+        <main>
+          <DateComponent />
+        </main>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import stocks from './stocks'
+import json from './stocks'
 
 export default combineReducers({
-	stocks
+	json
 })

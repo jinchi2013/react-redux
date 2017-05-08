@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getHeaderButtons } from '../reducers/stocks'
+import { getFromFeatureCards } from '../reducers/stocks'
 
 class HeaderComponent extends Component {
 	constructor(props) {
@@ -59,11 +59,11 @@ class HeaderComponent extends Component {
 				buttonsStyle = {
 					...style.basicButtonsStyle,
 					...style.notifyButtonsStyle
-				}	
+				}
 			}
 
 			return (
-						<button onClick={this._togglePanel} 
+						<button onClick={this._togglePanel}
 						    key={index}
 						    style={buttonsStyle}
 						    data-id={button}
@@ -75,7 +75,7 @@ class HeaderComponent extends Component {
 
 		return (
 				<section style={style.headerStyle}>
-					{  
+					{
 						isRequesting ? 'loading...' : toggleButtons
 					}
 				</section>
@@ -86,10 +86,10 @@ class HeaderComponent extends Component {
 const mapStateToProps = (state) => {
 	const {
 		isRequesting
-	} = state.stocks
+	} = state.json.jsonObject
 
 	return {
-		buttons: getHeaderButtons(state.stocks),
+		buttons: getFromFeatureCards(state.json, 'headerButton'),
 		isRequesting
 	}
 }

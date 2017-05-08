@@ -6,7 +6,7 @@ import {
 } from '../actions/actionConstant'
 
 const initialState = {
-	isRequesting: false, 
+	isRequesting: false,
 	requestFailed: false,
 	json: {
 		featureCards: {
@@ -14,7 +14,10 @@ const initialState = {
 		stockOrder: [],
 		headerButton: [],
 		},
-		date: {}
+		date: {
+			weekDayList: [],
+			monthsList: []
+		}
 	}
 }
 
@@ -48,7 +51,8 @@ export default combineReducers({
 	jsonObject
 })
 
-export const getStocksList = (state) => state.jsonObject.json.featureCards.stock
-export const getstockOrder = (state) => state.jsonObject.json.featureCards.stockOrder
-export const getHeaderButtons = (state) => state.jsonObject.json.featureCards.headerButton
-export const getDateObj = (state) => state.jsonObject.json.date
+const getFeatureCards = (state) => state.jsonObject.json.featureCards
+export const getFromFeatureCards = (state, feature) => getFeatureCards(state)[feature]
+
+const getDateObj = (state) => state.jsonObject.json.date
+export const getFromDateObj = (state, list) => getDateObj(state)[list]

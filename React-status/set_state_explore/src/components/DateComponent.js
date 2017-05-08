@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import WeekDayComponent from './WeekDayComponent'
 import MonthDateComponent from './MonthDateComponent'
+
+import { getFromDateObj } from '../reducers/stocks'
 
 class DateComponent extends Component {
 	constructor(props) {
@@ -23,11 +27,11 @@ class DateComponent extends Component {
 				   || state.dateObj.getDate() !== newDateObj.getDate()) {
 
 					return {
-						dateObj: newDateObj	
+						dateObj: newDateObj
 					}
 				}
 			})
-		}, 60000)
+		}, 10000)
 	}
 
 	render () {
@@ -40,13 +44,14 @@ class DateComponent extends Component {
 		const {
 			weekDayList,
 			monthsList
-		} = this.props.date
+		} = this.props
+
 		const weekDayIndex = this.state.dateObj.getDay()
 		const monthIndex = this.state.dateObj.getMonth()
 		const date = this.state.dateObj.getDate()
 
 		return (
-			<section style={containerStyle}> 
+			<section style={containerStyle}>
 				<WeekDayComponent weekDay={weekDayList[weekDayIndex]} />
 				<MonthDateComponent month={monthsList[monthIndex]} date={date} />
 			</section>
@@ -54,4 +59,13 @@ class DateComponent extends Component {
 	}
 }
 
-export default DateComponent
+const mapStateToProps = (state) => (
+	{
+		weekDayList: getFromDateObj(state.json, 'weekDayList'),
+		monthsList: getFromDateObj(state.json, 'monthsList')
+	}
+)
+
+export default connect(
+	mapStateToProps
+)(DateComponent)
