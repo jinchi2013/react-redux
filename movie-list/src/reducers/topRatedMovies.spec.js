@@ -9,13 +9,13 @@ describe('topRatedMovies', ()=>{
     }
 
     const initState = {
-      topRatedMovies: {
+      moviesList: {
           isRequesting: false
       }
     }
 
     expect(topRatedMovies(initState, action)).toEqual({
-      topRatedMovies: {
+      moviesList: {
           isRequesting: true
       }
     })

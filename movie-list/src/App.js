@@ -1,7 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {
+  fetchTopRated
+} from './actions'
 
 class App extends Component {
+
+  componentDidMount(){
+    this.props.fetchTopRated()
+  }
+
   render() {
+    console.log(this.props.moviesList)
     return (
       <div>
         Let us start here!
@@ -10,4 +20,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const masStateToProps = state => {
+  const { moviesList } = state.topRatedMovies
+
+  return {
+    moviesList
+  }
+}
+
+export default connect(
+  masStateToProps,
+  {
+    fetchTopRated
+  }
+)(App);

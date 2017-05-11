@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import topRatedMoives from './topRatedMoives'
+import topRatedMovies from './topRatedMovies'
 
 export default combineReducers({
-	topRatedMoives
+	topRatedMovies
 })
