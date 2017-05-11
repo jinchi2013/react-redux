@@ -3,7 +3,8 @@ import { camelizeKeys } from 'humps'
 import {
   REQUEST_TOP_RATED,
   RECEIVE_TOP_RATED,
-  REQUEST_FAILED
+  REQUEST_FAILED,
+  TOGGLE_MEUN
 } from '../actionsConst'
 
 export const requestTopRated  = () => ({
@@ -39,3 +40,8 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
     err => dispatch(requestFailed(err))
   )
 }
+
+// action for toggle the menu
+export const toggleMeun = () => ({
+  type: TOGGLE_MEUN
+})

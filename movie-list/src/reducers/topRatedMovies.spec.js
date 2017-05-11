@@ -20,4 +20,54 @@ describe('topRatedMovies', ()=>{
       }
     })
   })
+
+  it('should handle RECEIVE_TOP_RATED action', ()=> {
+    const action = {
+      type: types.RECEIVE_TOP_RATED,
+      json: {
+        data: 'data'
+      },
+      isRequesting: false,
+      requestFailed: false
+    }
+
+    const state = {
+      moviesList: {
+          isRequesting: true
+      }
+    }
+
+    expect(topRatedMovies(state, action)).toEqual({
+      moviesList: {
+        isRequesting: false,
+        requestFailed: false,
+        json: {
+          data: 'data'
+        }
+      }
+    })
+  })
+
+  it('should handle REQUEST_FAILED action', ()=> {
+    const action = {
+      type: types.REQUEST_FAILED,
+      requestFailed: true,
+      isRequesting: false,
+      err: 'something is worng'
+    }
+
+    const state = {
+      moviesList: {
+        requestFailed: false
+      }
+    }
+
+    expect(topRatedMovies(state, action)).toEqual({
+      moviesList: {
+        requestFailed: true,
+        isRequesting: false,
+        err: 'something is worng'
+      }
+    })
+  })
 })

@@ -32,6 +32,12 @@ describe('async : movie actions', () => {
       isRequesting: false,
     })
   })
+
+  it('handle toggleMeun action', ()=>{
+    expect(actions.toggleMeun()).toEqual({
+      type: types.TOGGLE_MEUN
+    })
+  })
 })
 
 // async actions
