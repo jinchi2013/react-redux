@@ -27,6 +27,8 @@ class App extends Component {
         <header>
           <h1 onClick={this.props.toggleMeun}>This is the header!!</h1>
         </header>
+        <section></section>
+        <footer></footer>
       </MainApp>
     );
   }
