@@ -7,11 +7,16 @@ const pulse = keyframes`
 `
 
 const styledHeartSvg = styled.svg`
-  fill: red;
+  fill: white;
+  stroke: red;
   position: relative;
   top: 5px;
-  width: 50px;
+  width: 35px;
   height: 30px;
   animation: ${pulse} 1s ease infinite;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 export default styledHeartSvg
