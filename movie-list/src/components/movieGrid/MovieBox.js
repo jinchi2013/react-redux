@@ -4,6 +4,8 @@ import StyledHeartSvg from '../utils/Styled_heart_svg'
 
 const MovieLi =  styled.li`
   list-style-type: none;
+  font-family: fantasy;
+  margin-top: 10px;
 
   img {
     width: 65%;

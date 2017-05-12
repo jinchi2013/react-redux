@@ -12,6 +12,8 @@ const initState = {
     results: [],
     totalPages: 0,
     totalResults: 0
+  },
+  byPageNumber: {
   }
 }
 

@@ -13,6 +13,10 @@ const MainApp = styled.main`
   width: 425px;
   height: 100%;
   text-align: center;
+
+  h1 {
+    font-family: cursive;
+  }
 `
 
 class App extends Component {
