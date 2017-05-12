@@ -4,7 +4,8 @@ import {
   REQUEST_TOP_RATED,
   RECEIVE_TOP_RATED,
   REQUEST_FAILED,
-  TOGGLE_MEUN
+  TOGGLE_MEUN,
+  SORT_MOVIES_ARRAY
 } from '../actionsConst'
 
 export const requestTopRated  = () => ({
@@ -39,6 +40,39 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
     },
     err => dispatch(requestFailed(err))
   )
+}
+
+// aciton for sort the movies arrayOfMovies
+const sortMoviesArray = (sortedArray) => ({
+  type: SORT_MOVIES_ARRAY,
+  results: sortedArray
+})
+
+export const sortArrayByField = (field=null) => (dispatch, getState) => {
+  const currState = getState()
+  const {
+    json: {
+      results
+    }
+  } = currState.topRatedMovies.moviesList
+
+  const copyResults = results.slice(0)
+
+  copyResults.sort( (a,b) => {
+    if( !field ) {
+      if(typeof a[field] === 'string') {
+        const dateA = new Date(a[field])
+        const dateB = new Date(b[field])
+
+        return dateA - dateB
+
+      }
+      return a[field] - a[field]
+    }
+    return false
+  })
+
+  return dispatch(sortMoviesArray(copyResults))
 }
 
 // action for toggle the menu

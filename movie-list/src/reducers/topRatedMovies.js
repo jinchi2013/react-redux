@@ -1,7 +1,8 @@
 import {
   REQUEST_TOP_RATED,
   RECEIVE_TOP_RATED,
-  REQUEST_FAILED
+  REQUEST_FAILED,
+  SORT_MOVIES_ARRAY
 } from '../actionsConst'
 import { combineReducers } from 'redux'
 
@@ -37,6 +38,13 @@ const moviesList = (state=initState, action) => {
         err: action.err,
         isRequesting: action.isRequesting,
         requestFailed: action.requestFailed
+      }
+    case SORT_MOVIES_ARRAY :
+      return {
+        ...state,
+        json: {
+          results: action.sortedArray
+        }
       }
     default:
       return state

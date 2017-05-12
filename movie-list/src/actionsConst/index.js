@@ -2,5 +2,8 @@ export const REQUEST_TOP_RATED = 'REQUEST_TOP_RATED'
 export const RECEIVE_TOP_RATED = 'RECEIVE_TOP_RATED'
 export const TOGGLE_MEUN = 'TOGGLE_MEUN'
 
+// sortMoviesArray
+export const SORT_MOVIES_ARRAY = 'SORT_MOVIES_ARRAY'
+
 // ajax fail constants
 export const REQUEST_FAILED = 'REQUEST_FAILED'
