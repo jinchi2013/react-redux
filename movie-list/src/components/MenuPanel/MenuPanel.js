@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   toggleMeun
-} from '../actions'
+} from '../../actions'
 import MenuWrapper from './MenuPanel_styled'
 
 

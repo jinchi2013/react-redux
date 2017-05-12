@@ -5,7 +5,7 @@ import {
   toggleMeun
 } from './actions'
 
-import MenuPanel from './components/MenuPanel'
+import MenuPanel from './components/MenuPanel/MenuPanel'
 import MoviesGrid from './containers/MoviesGrid'
 
 

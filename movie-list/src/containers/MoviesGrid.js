@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import {
   fetchTopRated
 } from '../actions'
-import MovieBox from '../components/MovieBox'
+import MovieBox from '../components/movieGrid/MovieBox'
+import MovieGridsControlPanel from '../components/movieGrid/MovieGridsControlPanel'
 
 const MoviesSection = styled.section`
   ul {
@@ -30,6 +31,7 @@ class MoviesGrid extends Component {
     } = this.props.moviesList
     return(
       <MoviesSection>
+        <MovieGridsControlPanel />
         <ul>
           {
             arrayOfMovies.map( movie => <MovieBox key={movie.id} movie={movie} /> )
