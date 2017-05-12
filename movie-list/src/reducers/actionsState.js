@@ -7,10 +7,11 @@ const initState = {
   isMenuOpen: false
 }
 
-const menuActionState = (state={initState}, action) => {
+const menuActionState = (state=initState, action) => {
   switch(action.type) {
     case TOGGLE_MEUN:
       return {
+        ...state,
         isMenuOpen: !state.isMenuOpen
       }
     default:

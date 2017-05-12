@@ -6,7 +6,13 @@ import {
 import { combineReducers } from 'redux'
 
 const initState = {
-  isRequesting: false
+  isRequesting: false,
+  json: {
+    page: 0,
+    results: [],
+    totalPages: 0,
+    totalResults: 0
+  }
 }
 
 const moviesList = (state=initState, action) => {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 import {
-  fetchTopRated,
   toggleMeun
 } from './actions'
 
 import MenuPanel from './components/MenuPanel'
-import styled from 'styled-components'
+import MoviesGrid from './containers/MoviesGrid'
+
 
 const MainApp = styled.main`
   width: 425px;
@@ -16,8 +17,14 @@ const MainApp = styled.main`
 
 class App extends Component {
 
-  componentDidMount(){
-    this.props.fetchTopRated()
+  _handleClick(e){
+    e.preventDefault()
+
+    const {
+      dispatch
+    } = this.props
+
+    dispatch(toggleMeun())
   }
 
   render() {
@@ -25,27 +32,13 @@ class App extends Component {
       <MainApp>
         <MenuPanel />
         <header>
-          <h1 onClick={this.props.toggleMeun}>This is the header!!</h1>
+          <h1 onClick={this._handleClick.bind(this)}>Our Top Rated Movies List</h1>
         </header>
-        <section></section>
+        <MoviesGrid />
         <footer></footer>
       </MainApp>
     );
   }
 }
 
-const masStateToProps = state => {
-  const { moviesList } = state.topRatedMovies
-
-  return {
-    moviesList,
-  }
-}
-
-export default connect(
-  masStateToProps,
-  {
-    fetchTopRated,
-    toggleMeun
-  }
-)(App);
+export default connect()(App);
