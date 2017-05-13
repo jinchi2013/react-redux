@@ -19,6 +19,7 @@ const MovieLi =  styled.li`
 
   div[data-desc='overview'] {
     padding-top: 5px;
+    text-align: justify;
   }
 `
 
