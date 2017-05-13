@@ -22,15 +22,11 @@ class MoviesGrid extends Component {
 
   render() {
     const {
-      moviesList: {
-        isRequesting,
-        json: {
-          page,
-          totalPages,
-          totalResults,
-          results: arrayOfMovies
-        }
-      }
+      isRequesting,
+      page,
+      totalPages,
+      totalResults,
+      arrayOfMovies
     } = this.props
 
     return(
@@ -53,10 +49,24 @@ class MoviesGrid extends Component {
 }
 
 const masStateToProps = state => {
-  const { moviesList } = state.topRatedMovies
+  const {
+    moviesList : {
+      isRequesting,
+      json: {
+        page,
+        totalPages,
+        totalResults,
+        results: arrayOfMovies
+      }
+    }
+  } = state.topRatedMovies
 
   return {
-    moviesList,
+    isRequesting,
+    page,
+    totalPages,
+    totalResults,
+    arrayOfMovies
   }
 }
 

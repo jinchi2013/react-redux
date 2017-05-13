@@ -2,7 +2,8 @@ import {
   REQUEST_TOP_RATED,
   RECEIVE_TOP_RATED,
   REQUEST_FAILED,
-  SORT_MOVIES_ARRAY
+  SORT_MOVIES_ARRAY,
+  CACHE_MOVIE_RESULTS
 } from '../actionsConst'
 import { combineReducers } from 'redux'
 
@@ -13,8 +14,6 @@ const initState = {
     results: [],
     totalPages: 0,
     totalResults: 0
-  },
-  byPageNumber: {
   }
 }
 
@@ -43,7 +42,8 @@ const moviesList = (state=initState, action) => {
       return {
         ...state,
         json: {
-          results: action.sortedArray
+          ...state.json,
+          results: action.results
         }
       }
     default:
@@ -51,6 +51,19 @@ const moviesList = (state=initState, action) => {
   }
 }
 
+const byPageNumber = (state={}, action) => {
+  switch(action.type) {
+    case CACHE_MOVIE_RESULTS :
+      return {
+        ...state,
+        [action.pageNumber]: action.camelizeJson
+      }
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  moviesList
+  moviesList,
+  byPageNumber
 })

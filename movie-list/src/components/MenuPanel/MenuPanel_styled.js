@@ -13,6 +13,7 @@ const MenuWrapper = styled.nav`
   div {
     background-color: gray;
     color: #fff;
+    opacity: 0.9;
     position: relative;
     max-width: 400px;
     width: 90%;
