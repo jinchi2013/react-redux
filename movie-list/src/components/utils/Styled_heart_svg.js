@@ -7,7 +7,7 @@ const pulse = keyframes`
 `
 
 const styledHeartSvg = styled.svg`
-  fill: white;
+  fill: red;
   stroke: red;
   position: relative;
   top: 5px;

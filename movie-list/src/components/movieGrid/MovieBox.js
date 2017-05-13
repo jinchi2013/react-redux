@@ -18,13 +18,13 @@ const MovieLi =  styled.li`
   }
 
   div[data-desc='overview'] {
-
+    padding-top: 5px;
   }
 `
 
 const preparePosterSrcLink = posterPath => `https://image.tmdb.org/t/p/w500${posterPath}`
 
-const MovieBox = ({ movie:{title, overview, releaseDate, posterPath}}) => {
+const MovieBox = ({ movie:{title, overview, releaseDate, posterPath, voteAverage, voteCount}}) => {
   return(
     <MovieLi>
       <img src={preparePosterSrcLink(posterPath)} alt={title} />
@@ -35,7 +35,12 @@ const MovieBox = ({ movie:{title, overview, releaseDate, posterPath}}) => {
         <span data-title='title'>{title}</span>
       </h4>
       <section>
-        <div>{releaseDate}</div>
+        <div data-desc='releaseDate'>
+          <span>Release Date: {releaseDate}</span>
+        </div>
+        <div data-desc='vote'>
+          <span>Vote Count: {voteCount} | Average Score: {voteAverage}/10</span>
+        </div>
         <div data-desc='overview'>
           { overview }
         </div>
