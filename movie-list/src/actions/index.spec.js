@@ -9,7 +9,7 @@ describe('async : movie actions', () => {
   it('initiate the request to fetch data from top rated movie api', () => {
     expect(actions.requestTopRated()).toEqual({
       type: types.REQUEST_TOP_RATED,
-      isRequesting: true
+      isRequesting: true,
     })
   })
 
@@ -59,7 +59,13 @@ describe('async: movie actions', ()=>{
         totalResults: 100
       })
 
-    const initState = {}
+    const initState = {
+      topRatedMovies: {
+        byPageNumber: {
+
+        }
+      }
+    }
     const store = mockStore(initState)
     return store.dispatch(actions.fetchTopRated(2))
       .then(()=>{
@@ -68,6 +74,16 @@ describe('async: movie actions', ()=>{
           {
             "isRequesting": true,
             "type": "REQUEST_TOP_RATED"
+          },
+          {
+            "camelizeJson": {
+              "page": 2, 
+              "results": ["movies array"], 
+              "totalPage": 10, 
+              "totalResults": 100
+            }, 
+            "pageNumber": 2, 
+            "type": "CACHE_MOVIE_RESULTS"
           },
           {
             "isRequesting": false,

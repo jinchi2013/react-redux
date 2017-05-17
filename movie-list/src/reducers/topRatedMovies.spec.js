@@ -11,13 +11,15 @@ describe('topRatedMovies', ()=>{
     const initState = {
       moviesList: {
           isRequesting: false
-      }
+      },
+      byPageNumber: {}
     }
 
     expect(topRatedMovies(initState, action)).toEqual({
       moviesList: {
           isRequesting: true
-      }
+      },
+      byPageNumber: {}
     })
   })
 
@@ -44,7 +46,8 @@ describe('topRatedMovies', ()=>{
         json: {
           data: 'data'
         }
-      }
+      },
+      byPageNumber: {}
     })
   })
 
@@ -67,6 +70,56 @@ describe('topRatedMovies', ()=>{
         requestFailed: true,
         isRequesting: false,
         err: 'something is worng'
+      },
+      byPageNumber: {}
+    })
+  })
+
+  it('should handle SORT_MOVIES_ARRAY', ()=>{
+    const action = {
+      type: types.SORT_MOVIES_ARRAY,
+      results: [1,2,3]
+    }
+
+    const state = {
+      moviesList: {
+        json: {
+          page: 2,
+          totalPage: 10,
+          results: [3,2,1]
+        }
+      },
+      byPageNumber: {}
+    }
+
+    expect(topRatedMovies(state, action)).toEqual({
+      moviesList: {
+        json: {
+          page: 2,
+          totalPage: 10,
+          results: [1,2,3]
+        }
+      },
+      byPageNumber: {}
+    })
+  })
+
+  it('should handle CACHE_MOVIE_RESULTS', ()=>{
+    const action = {
+      type: types.CACHE_MOVIE_RESULTS,
+      pageNumber: 2,
+      camelizeJson: { data: 'data' }
+    }
+
+    const state = {
+      moviesList: {},
+      byPageNumber: {}
+    }
+
+    expect(topRatedMovies(state, action)).toEqual({
+      moviesList: {},
+      byPageNumber: {
+        "2": { data: 'data' }
       }
     })
   })
