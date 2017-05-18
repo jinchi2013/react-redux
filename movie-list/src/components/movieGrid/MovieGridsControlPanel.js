@@ -7,13 +7,18 @@ const ControlPanelWrapper = styled.div`
   padding: 10px 0;
   display: flex;
   justify-content: space-around;
+`
 
-  button {
-    text-align: center;
-    background-color: #3498db;
-    height: 30px;
-    color: white;
-    border: 0;
+const Button = styled.button`
+  text-align: center;
+  background-color: #3498db;
+  height: 30px;
+  color: white;
+  border: 0;
+
+  &:after {
+    content: ${props => props.upOrDown ? "\'\u2191\'" : "\'\u2193\'"};
+    padding-left: 5px;
   }
 `
 
@@ -39,7 +44,9 @@ class MovieGridsControlPanel extends Component {
     return (
       <ControlPanelWrapper>
         {
-          filterFields.map( (field, i) => <button key={i} data-id={field} onClick={this._handleClick.bind(this)}>{field.toUpperCase()}</button>)
+          filterFields.map( (field, i) => {
+            return <Button key={i} data-id={field} onClick={this._handleClick.bind(this)} upOrDown={this.state[field]}>{field.toUpperCase()}</Button>
+          })
         }
       </ControlPanelWrapper>
     )
