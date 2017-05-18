@@ -45,7 +45,16 @@ class MovieGridsControlPanel extends Component {
       <ControlPanelWrapper>
         {
           filterFields.map( (field, i) => {
-            return <Button key={i} data-id={field} onClick={this._handleClick.bind(this)} upOrDown={this.state[field]}>{field.toUpperCase()}</Button>
+            return (
+              <Button
+                key={i}
+                data-id={field}
+                onClick={this._handleClick.bind(this)}
+                upOrDown={this.state[field]}
+              >
+                {field.toUpperCase()}
+              </Button>
+            )
           })
         }
       </ControlPanelWrapper>
