@@ -28,7 +28,7 @@ export const requestFailed = err => ({
   err,
 })
 
-const cacheMovieResults = (camelizeJson, pageNumber) => ({
+export const cacheMovieResults = (camelizeJson, pageNumber) => ({
   type: CACHE_MOVIE_RESULTS,
   camelizeJson,
   pageNumber

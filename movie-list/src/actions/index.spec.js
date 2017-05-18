@@ -4,8 +4,11 @@ import thunk from 'redux-thunk'
 import * as actions from './index'
 import * as types from '../actionsConst/'
 
+const middleware = [thunk]
+const mockStore = configureMockStore(middleware)
+
 // sync actions test
-describe('async : movie actions', () => {
+describe('sync : movie actions', () => {
   it('initiate the request to fetch data from top rated movie api', () => {
     expect(actions.requestTopRated()).toEqual({
       type: types.REQUEST_TOP_RATED,
@@ -38,12 +41,47 @@ describe('async : movie actions', () => {
       type: types.TOGGLE_MEUN
     })
   })
+
+  it('handle CACHE_MOVIE_RESULTS action', ()=>{
+    const camelizeJson = {
+      page: 1
+    }
+    const pageNumber = 2;
+
+    expect(actions.cacheMovieResults(camelizeJson, pageNumber)).toEqual({
+      type: types.CACHE_MOVIE_RESULTS,
+      camelizeJson: camelizeJson,
+      pageNumber: pageNumber
+    })
+  })
+
+  it('handle sortArrayByField action', ()=>{
+    const initState = {
+      topRatedMovies: {
+        moviesList: {
+          json:{
+            results: [{voteCount: 1},{voteCount: 2},{voteCount: 3}]
+          }
+        }
+      }
+    }
+    const field = 'voteCount'
+
+    const store = mockStore(initState)
+    store.dispatch(actions.sortArrayByField(field, false))
+    const action = store.getActions()
+    const expectedActions = [
+      {
+        type: types.SORT_MOVIES_ARRAY,
+        results: [{voteCount: 3},{voteCount: 2},{voteCount: 1}]
+      }
+    ]
+
+    expect(action).toEqual(expectedActions)
+  })
 })
 
 // async actions
-const middleware = [thunk]
-const mockStore = configureMockStore(middleware)
-
 describe('async: movie actions', ()=>{
   afterEach(()=>{
     nock.cleanAll()
@@ -77,12 +115,12 @@ describe('async: movie actions', ()=>{
           },
           {
             "camelizeJson": {
-              "page": 2, 
-              "results": ["movies array"], 
-              "totalPage": 10, 
+              "page": 2,
+              "results": ["movies array"],
+              "totalPage": 10,
               "totalResults": 100
-            }, 
-            "pageNumber": 2, 
+            },
+            "pageNumber": 2,
             "type": "CACHE_MOVIE_RESULTS"
           },
           {
