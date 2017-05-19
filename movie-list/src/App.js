@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
-	Route
+	Route,
+  withRouter
 } from 'react-router-dom'
 
 import {
@@ -51,4 +52,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default withRouter(connect()(App))
