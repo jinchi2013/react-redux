@@ -1,5 +1,6 @@
 import {
-  TOGGLE_MEUN
+  TOGGLE_MEUN,
+  SELECT_SINGLE_MOVIE
 } from '../actionsConst'
 import { combineReducers } from 'redux'
 
@@ -19,6 +20,21 @@ const menuActionState = (state=initState, action) => {
   }
 }
 
+const initSelectedMoviesList = {
+  watchLaterList:[]
+}
+
+const selectedMoviesList = (state=initSelectedMoviesList, action) => {
+  switch (action.type) {
+    case SELECT_SINGLE_MOVIE:
+      state.watchLaterList.push(action.movieId)
+      return state
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  menuActionState
+  menuActionState,
+  selectedMoviesList
 })
