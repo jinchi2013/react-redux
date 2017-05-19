@@ -79,6 +79,14 @@ describe('sync : movie actions', () => {
 
     expect(action).toEqual(expectedActions)
   })
+
+  it('handle SELECT_SINGLE_MOVIE action', ()=>{
+    const movieId = 199
+    expect(actions.selectSingleMovie(movieId)).toEqual({
+      type: types.SELECT_SINGLE_MOVIE,
+      movieId: movieId
+    })
+  })
 })
 
 // async actions

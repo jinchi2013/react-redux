@@ -6,5 +6,8 @@ export const CACHE_MOVIE_RESULTS = 'CACHE_MOVIE_RESULTS'
 // sortMoviesArray
 export const SORT_MOVIES_ARRAY = 'SORT_MOVIES_ARRAY'
 
+// selectSingleMovie
+export const SELECT_SINGLE_MOVIE = 'SELECT_SINGLE_MOVIE'
+
 // ajax fail constants
 export const REQUEST_FAILED = 'REQUEST_FAILED'

@@ -1,35 +1,28 @@
 import fetch from 'isomorphic-fetch'
 import { camelizeKeys } from 'humps'
-import {
-  REQUEST_TOP_RATED,
-  RECEIVE_TOP_RATED,
-  REQUEST_FAILED,
-  TOGGLE_MEUN,
-  SORT_MOVIES_ARRAY,
-  CACHE_MOVIE_RESULTS
-} from '../actionsConst'
+import * as Types from '../actionsConst'
 
 export const requestTopRated  = () => ({
-  type: REQUEST_TOP_RATED,
+  type: Types.REQUEST_TOP_RATED,
   isRequesting: true
 })
 
 export const receiveTopRated = (json) => ({
-  type: RECEIVE_TOP_RATED,
+  type: Types.RECEIVE_TOP_RATED,
   isRequesting: false,
   requestFailed: false,
   json
 })
 
 export const requestFailed = err => ({
-  type: REQUEST_FAILED,
+  type: Types.REQUEST_FAILED,
   requestFailed: true,
   isRequesting: false,
   err,
 })
 
 export const cacheMovieResults = (camelizeJson, pageNumber) => ({
-  type: CACHE_MOVIE_RESULTS,
+  type: Types.CACHE_MOVIE_RESULTS,
   camelizeJson,
   pageNumber
 })
@@ -65,7 +58,7 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
 
 // aciton for sort the movies arrayOfMovies
 const sortMoviesArray = (sortedArray) => ({
-  type: SORT_MOVIES_ARRAY,
+  type: Types.SORT_MOVIES_ARRAY,
   results: sortedArray
 })
 
@@ -112,7 +105,13 @@ export const sortArrayByField = (field=null, upOrDown) => (dispatch, getState) =
   return dispatch(sortMoviesArray(copyResults))
 }
 
+// actions for select one movie to be added to another list
+export const selectSingleMovie = (movieId) => ({
+  type: Types.SELECT_SINGLE_MOVIE,
+  movieId: movieId
+})
+
 // action for toggle the menu
 export const toggleMeun = () => ({
-  type: TOGGLE_MEUN
+  type: Types.TOGGLE_MEUN
 })

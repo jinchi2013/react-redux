@@ -67,3 +67,10 @@ export default combineReducers({
   moviesList,
   byPageNumber
 })
+
+export const moviesListById = (state, pageNumber) => state.byPageNumber[pageNumber].reduce((res, movie) => {
+  res[movie.id] = movie
+  return res
+}, {})
+
+export const getMovieById = (state, pageNumber, id) => moviesListById(state, pageNumber)[id]
