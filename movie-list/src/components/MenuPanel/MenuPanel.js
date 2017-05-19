@@ -4,7 +4,9 @@ import {
   toggleMeun
 } from '../../actions'
 import MenuWrapper from './MenuPanel_styled'
-
+import {
+	Link
+} from 'react-router-dom'
 
 
 class MenuPanel extends Component {
@@ -12,8 +14,12 @@ class MenuPanel extends Component {
     const { isMenuOpen } = this.props.menuActionState
     return (
       <MenuWrapper isMenuOpen={isMenuOpen}>
-        <div onClick={this.props.toggleMeun}>
-          <h2>This is nav menu</h2>
+        <div>
+          <button onClick={this.props.toggleMeun}>X</button>
+          <ul>
+            <li><Link to="/">Movies List</Link></li>
+            <li><Link to="/MoviesOfWatchLater">Watch Later List</Link></li>
+          </ul>
         </div>
       </MenuWrapper>
     )

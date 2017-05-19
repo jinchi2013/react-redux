@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
+	Route
+} from 'react-router-dom'
+
+import {
   toggleMeun
 } from './actions'
 
 import MenuPanel from './components/MenuPanel/MenuPanel'
 import MoviesGrid from './containers/MoviesGrid'
+import MoviesOfWatchLater from './containers/MoviesOfWatchLater'
 
 
 const MainApp = styled.main`
@@ -38,7 +43,8 @@ class App extends Component {
         <header>
           <h1 onClick={this._handleClick.bind(this)}>Our Top Rated Movies List</h1>
         </header>
-        <MoviesGrid />
+        <Route exact path="/" component={MoviesGrid} />
+        <Route path="/MoviesOfWatchLater" component={MoviesOfWatchLater} />
         <footer></footer>
       </MainApp>
     );
