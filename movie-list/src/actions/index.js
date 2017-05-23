@@ -129,11 +129,12 @@ export const addDislikedMoive = (movie, buttonType, page) => ({
 export const addSingleMovie = (movie, buttonType, page) => (dispatch, getState) => {
   const currState = getState()
 
+  if(currState.actionsState.selectedMoviesList[buttonType].idMap.hasOwnProperty(movie.id.toString())){
+    return false
+  }
+
   switch(buttonType) {
     case 'liked':
-      if(currState.actionsState.selectedMoviesList.liked.idMap.hasOwnProperty(movie.id.toString())){
-        return false
-      }
       return dispatch(addLikedMoive(movie, buttonType, page))
     case 'block':
       return dispatch(addDislikedMoive(movie, buttonType, page))

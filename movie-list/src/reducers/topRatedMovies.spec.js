@@ -108,7 +108,7 @@ describe('topRatedMovies', ()=>{
     const action = {
       type: types.CACHE_MOVIE_RESULTS,
       pageNumber: 2,
-      camelizeJson: { data: 'data' }
+      camelizeJson: { results: [{id:100}, {id:101}] }
     }
 
     const state = {
@@ -119,7 +119,20 @@ describe('topRatedMovies', ()=>{
     expect(topRatedMovies(state, action)).toEqual({
       moviesList: {},
       byPageNumber: {
-        "2": { data: 'data' }
+        "2": {
+          results: {
+            '100': {
+              id:100,
+              liked: false,
+              block: false
+            },
+            '101': {
+              id:101,
+              liked: false,
+              block: false
+            }
+          }
+        }
       }
     })
   })

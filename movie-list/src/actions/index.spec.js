@@ -81,17 +81,35 @@ describe('sync : movie actions', () => {
   })
 
   it('handle selectSingleMovie action to generate ADD_LIKED_MOVIE action', ()=>{
-    const initState = {}
+    const initState = {
+      actionsState: {
+        selectedMoviesList: {
+          liked: {
+            idMap: {},
+            idArr: []
+          },
+          block: {
+            idMap: {},
+            idArr: []
+          }
+        }
+      }
+    }
 
     const buttonType = 'liked'
-    const movieId = 165
+    const movie = {
+      id: 165
+    }
+    const page = 2
     const store = mockStore(initState)
-    store.dispatch(actions.addSingleMovie(movieId, buttonType))
+    store.dispatch(actions.addSingleMovie(movie, buttonType, page))
     const action = store.getActions()
     const expectedActions = [
       {
         type: types.ADD_LIKED_MOVIE,
-        movieId: movieId
+        movie: movie,
+        page: page,
+        buttonType: buttonType
       }
     ]
 
@@ -99,17 +117,35 @@ describe('sync : movie actions', () => {
   })
 
   it('handle selectSingleMovie action to generate ADD_DISLIKED_MOVIE action', ()=>{
-    const initState = {}
+    const initState = {
+      actionsState: {
+        selectedMoviesList: {
+          liked: {
+            idMap: {},
+            idArr: []
+          },
+          block: {
+            idMap: {},
+            idArr: []
+          }
+        }
+      }
+    }
 
     const buttonType = 'block'
-    const movieId = 165
+    const movie = {
+      id: 165
+    }
+    const page = 2
     const store = mockStore(initState)
-    store.dispatch(actions.addSingleMovie(movieId, buttonType))
+    store.dispatch(actions.addSingleMovie(movie, buttonType, page))
     const action = store.getActions()
     const expectedActions = [
       {
         type: types.ADD_DISLIKED_MOVIE,
-        movieId: movieId
+        movie: movie,
+        page: page,
+        buttonType: buttonType
       }
     ]
 

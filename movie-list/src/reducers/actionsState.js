@@ -22,7 +22,7 @@ const initSelectedMoviesList = {
     idArr: [],
     idMap: {}
   },
-  disliked:{
+  block:{
     idArr: [],
     idMap: {}
   }
@@ -31,29 +31,16 @@ const initSelectedMoviesList = {
 const selectedMoviesList = (state=initSelectedMoviesList, action) => {
   switch (action.type) {
     case Types.ADD_LIKED_MOVIE:
-      return {
-        ...state,
-        liked: {
-          idArr: [
-            ...state.liked.idArr,
-            action.movie.id
-          ],
-          idMap: {
-            ...state.liked.idMap,
-            [action.movie.id]: action.movie
-          }
-        }
-      }
     case Types.ADD_DISLIKED_MOVIE:
       return {
         ...state,
-        disliked: {
+        [action.buttonType]: {
           idArr: [
-            ...state.disliked.idArr,
+            ...state[action.buttonType].idArr,
             action.movie.id
           ],
           idMap: {
-            ...state.disliked.idMap,
+            ...state[action.buttonType].idMap,
             [action.movie.id]: action.movie
           }
         }

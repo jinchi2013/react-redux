@@ -12,8 +12,14 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        likedList:[],
-        dislikedList:[]
+        liked:{
+          idArr: [],
+          idMap: {}
+        },
+        block:{
+          idArr: [],
+          idMap: {}
+        }
       }
     }
 
@@ -22,8 +28,14 @@ describe('actionsState', ()=>{
         isMenuOpen: true
       },
       selectedMoviesList: {
-        likedList:[],
-        dislikedList:[]
+        liked:{
+          idArr: [],
+          idMap: {}
+        },
+        block:{
+          idArr: [],
+          idMap: {}
+        }
       }
     })
   })
@@ -31,15 +43,24 @@ describe('actionsState', ()=>{
   it('should handle ADD_LIKED_MOVIE action', ()=>{
     const action = {
       type: types.ADD_LIKED_MOVIE,
-      movieId: 199
+      movie: {
+        id: 100
+      },
+      buttonType: 'liked'
     }
     const state = {
       menuActionState: {
         isMenuOpen: false
       },
       selectedMoviesList: {
-        likedList:[],
-        dislikedList:[]
+        liked:{
+          idArr: [],
+          idMap: {}
+        },
+        block:{
+          idArr: [],
+          idMap: {}
+        }
       }
     }
 
@@ -48,8 +69,18 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        likedList:[199],
-        dislikedList:[]
+        liked:{
+          idArr: [100],
+          idMap: {
+            '100': {
+              id: 100
+            }
+          }
+        },
+        block:{
+          idArr: [],
+          idMap: {}
+        }
       }
     })
   })
@@ -57,15 +88,24 @@ describe('actionsState', ()=>{
   it('should handle ADD_DISLIKED_MOVIE action', ()=>{
     const action = {
       type: types.ADD_DISLIKED_MOVIE,
-      movieId: 199
+      movie: {
+        id: 100
+      },
+      buttonType: 'block'
     }
     const state = {
       menuActionState: {
         isMenuOpen: false
       },
       selectedMoviesList: {
-        likedList:[],
-        dislikedList:[]
+        liked:{
+          idArr: [],
+          idMap: {}
+        },
+        block:{
+          idArr: [],
+          idMap: {}
+        }
       }
     }
 
@@ -74,8 +114,18 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        likedList:[],
-        dislikedList:[199]
+        liked:{
+          idArr: [],
+          idMap: {}
+        },
+        block:{
+          idArr: [100],
+          idMap: {
+            '100': {
+              id: 100
+            }
+          }
+        }
       }
     })
   })
