@@ -30,9 +30,6 @@ export const cacheMovieResults = (camelizeJson, pageNumber) => ({
 const convertIdMapToArray = (cachedJsonByPage) => Object.keys(cachedJsonByPage.results).map( key => cachedJsonByPage.results[key] )
 
 export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
-
-  dispatch(requestTopRated())
-
   const currState = getState()
   const isPageNumCached = currState.topRatedMovies.byPageNumber.hasOwnProperty(pageNumber.toString())
 
@@ -45,6 +42,8 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
 
     return dispatch( receiveTopRated(reFormattedJson) )
   }
+
+  dispatch(requestTopRated())
 
   return fetch(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=4bef8838c2fd078bd13d7127d8dedcd4&language=en-US?&page=${pageNumber}`
