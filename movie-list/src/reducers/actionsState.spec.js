@@ -12,7 +12,8 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        watchLaterList:[]
+        likedList:[],
+        dislikedList:[]
       }
     }
 
@@ -21,14 +22,15 @@ describe('actionsState', ()=>{
         isMenuOpen: true
       },
       selectedMoviesList: {
-        watchLaterList:[]
+        likedList:[],
+        dislikedList:[]
       }
     })
   })
 
-  it('should handle SELECT_SINGLE_MOVIE action', ()=>{
+  it('should handle ADD_LIKED_MOVIE action', ()=>{
     const action = {
-      type: types.SELECT_SINGLE_MOVIE,
+      type: types.ADD_LIKED_MOVIE,
       movieId: 199
     }
     const state = {
@@ -36,7 +38,8 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        watchLaterList:[]
+        likedList:[],
+        dislikedList:[]
       }
     }
 
@@ -45,7 +48,34 @@ describe('actionsState', ()=>{
         isMenuOpen: false
       },
       selectedMoviesList: {
-        watchLaterList:[199]
+        likedList:[199],
+        dislikedList:[]
+      }
+    })
+  })
+
+  it('should handle ADD_DISLIKED_MOVIE action', ()=>{
+    const action = {
+      type: types.ADD_DISLIKED_MOVIE,
+      movieId: 199
+    }
+    const state = {
+      menuActionState: {
+        isMenuOpen: false
+      },
+      selectedMoviesList: {
+        likedList:[],
+        dislikedList:[]
+      }
+    }
+
+    expect(actionsState(state, action)).toEqual({
+      menuActionState: {
+        isMenuOpen: false
+      },
+      selectedMoviesList: {
+        likedList:[],
+        dislikedList:[199]
       }
     })
   })

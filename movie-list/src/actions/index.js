@@ -106,10 +106,23 @@ export const sortArrayByField = (field=null, upOrDown) => (dispatch, getState) =
 }
 
 // actions for select one movie to be added to another list
-export const selectSingleMovie = (movieId) => ({
-  type: Types.SELECT_SINGLE_MOVIE,
+export const addLikeMoive = (movieId) => ({
+  type: Types.ADD_LIKED_MOVIE,
   movieId: movieId
 })
+
+export const addDislikedMoive = (movieId) => ({
+  type: Types.ADD_DISLIKED_MOVIE,
+  movieId: movieId
+})
+
+export const addSingleMovie = (movieId, likeOrNot) => dispatch => {
+  if(likeOrNot) {
+    dispatch(addLikeMoive(movieId))
+  } else {
+    dispatch(addDislikedMoive(movieId))
+  }
+}
 
 // action for toggle the menu
 export const toggleMeun = () => ({

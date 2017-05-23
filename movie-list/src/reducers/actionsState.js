@@ -1,7 +1,4 @@
-import {
-  TOGGLE_MEUN,
-  SELECT_SINGLE_MOVIE
-} from '../actionsConst'
+import * as Types from '../actionsConst'
 import { combineReducers } from 'redux'
 
 const initState = {
@@ -10,7 +7,7 @@ const initState = {
 
 const menuActionState = (state=initState, action) => {
   switch(action.type) {
-    case TOGGLE_MEUN:
+    case Types.TOGGLE_MEUN:
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen
@@ -21,14 +18,28 @@ const menuActionState = (state=initState, action) => {
 }
 
 const initSelectedMoviesList = {
-  watchLaterList:[]
+  likedList:[],
+  dislikedList:[]
 }
 
 const selectedMoviesList = (state=initSelectedMoviesList, action) => {
   switch (action.type) {
-    case SELECT_SINGLE_MOVIE:
-      state.watchLaterList.push(action.movieId)
-      return state
+    case Types.ADD_LIKED_MOVIE:
+      return {
+        ...state,
+        likedList: [
+          ...state.likedList,
+          action.movieId
+        ]
+      }
+    case Types.ADD_DISLIKED_MOVIE:
+      return {
+        ...state,
+        dislikedList: [
+          ...state.dislikedList,
+          action.movieId
+        ]
+      }
     default:
       return state
   }

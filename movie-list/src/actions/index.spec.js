@@ -80,12 +80,40 @@ describe('sync : movie actions', () => {
     expect(action).toEqual(expectedActions)
   })
 
-  it('handle SELECT_SINGLE_MOVIE action', ()=>{
-    const movieId = 199
-    expect(actions.selectSingleMovie(movieId)).toEqual({
-      type: types.SELECT_SINGLE_MOVIE,
-      movieId: movieId
-    })
+  it('handle selectSingleMovie action to generate ADD_LIKED_MOVIE action', ()=>{
+    const initState = {}
+
+    const likeOrNot = true
+    const movieId = 165
+    const store = mockStore(initState)
+    store.dispatch(actions.addSingleMovie(movieId, likeOrNot))
+    const action = store.getActions()
+    const expectedActions = [
+      {
+        type: types.ADD_LIKED_MOVIE,
+        movieId: movieId
+      }
+    ]
+
+    expect(action).toEqual(expectedActions)
+  })
+
+  it('handle selectSingleMovie action to generate ADD_DISLIKED_MOVIE action', ()=>{
+    const initState = {}
+
+    const likeOrNot = false
+    const movieId = 165
+    const store = mockStore(initState)
+    store.dispatch(actions.addSingleMovie(movieId, likeOrNot))
+    const action = store.getActions()
+    const expectedActions = [
+      {
+        type: types.ADD_DISLIKED_MOVIE,
+        movieId: movieId
+      }
+    ]
+
+    expect(action).toEqual(expectedActions)
   })
 })
 
