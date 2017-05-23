@@ -1,14 +1,8 @@
-import {
-  REQUEST_TOP_RATED,
-  RECEIVE_TOP_RATED,
-  REQUEST_FAILED,
-  SORT_MOVIES_ARRAY,
-  CACHE_MOVIE_RESULTS
-} from '../actionsConst'
+import * as Types from '../actionsConst'
 import { combineReducers } from 'redux'
 
 const initState = {
-  isRequesting: false,
+  isRequesting: true,
   json: {
     page: 0,
     results: [],
@@ -19,31 +13,43 @@ const initState = {
 
 const moviesList = (state=initState, action) => {
   switch(action.type) {
-    case REQUEST_TOP_RATED :
+    case Types.REQUEST_TOP_RATED :
       return {
         ...state,
         isRequesting: action.isRequesting
       }
-    case RECEIVE_TOP_RATED :
+    case Types.RECEIVE_TOP_RATED :
       return {
         ...state,
         isRequesting: action.isRequesting,
         requestFailed: action.requestFailed,
         json: action.json
       }
-    case REQUEST_FAILED :
+    case Types.REQUEST_FAILED :
       return {
         ...state,
         err: action.err,
         isRequesting: action.isRequesting,
         requestFailed: action.requestFailed
       }
-    case SORT_MOVIES_ARRAY :
+    case Types.SORT_MOVIES_ARRAY :
       return {
         ...state,
         json: {
           ...state.json,
           results: action.results
+        }
+      }
+    case Types.ADD_LIKED_MOVIE:
+    case Types.ADD_DISLIKED_MOVIE:
+      const copy = state.json.results.slice(0)
+      const index = copy.findIndex( ele => ele.id === action.movie.id )
+      copy[index][action.buttonType] = true
+      return {
+        ...state,
+        json: {
+          ...state.json,
+          results: copy
         }
       }
     default:
@@ -53,10 +59,33 @@ const moviesList = (state=initState, action) => {
 
 const byPageNumber = (state={}, action) => {
   switch(action.type) {
-    case CACHE_MOVIE_RESULTS :
+    case Types.CACHE_MOVIE_RESULTS :
       return {
         ...state,
-        [action.pageNumber]: action.camelizeJson
+        [action.pageNumber]: {
+          ...action.camelizeJson,
+          results: action.camelizeJson.results.reduce((res, movie)=> {
+            res[movie.id] = {...movie}
+            res[movie.id].liked = false
+            res[movie.id].block = false
+            return res
+          }, {})
+        }
+      }
+    case Types.ADD_LIKED_MOVIE:
+    case Types.ADD_DISLIKED_MOVIE:
+      return {
+        ...state,
+        [action.page]: {
+          ...state[action.page],
+          results: {
+            ...state[action.page].results,
+            [action.movie.id]: {
+              ...state[action.page].results[action.movie.id],
+              [action.buttonType]: true
+            }
+          }
+        }
       }
     default:
       return state
@@ -67,10 +96,3 @@ export default combineReducers({
   moviesList,
   byPageNumber
 })
-
-export const moviesListById = (state, pageNumber) => state.byPageNumber[pageNumber].reduce((res, movie) => {
-  res[movie.id] = movie
-  return res
-}, {})
-
-export const getMovieById = (state, pageNumber, id) => moviesListById(state, pageNumber)[id]

@@ -18,7 +18,7 @@ class MenuPanel extends Component {
           <button onClick={this.props.toggleMeun}>X</button>
           <ul>
             <li><Link to="/">Movies List</Link></li>
-            <li><Link to="/MoviesOfWatchLater">Watch Later List</Link></li>
+            <li><Link to="/MovieListOfLiked">Movie List Of Liked</Link></li>
           </ul>
         </div>
       </MenuWrapper>

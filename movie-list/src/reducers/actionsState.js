@@ -18,8 +18,14 @@ const menuActionState = (state=initState, action) => {
 }
 
 const initSelectedMoviesList = {
-  likedList:[],
-  dislikedList:[]
+  liked:{
+    idArr: [],
+    idMap: {}
+  },
+  disliked:{
+    idArr: [],
+    idMap: {}
+  }
 }
 
 const selectedMoviesList = (state=initSelectedMoviesList, action) => {
@@ -27,18 +33,30 @@ const selectedMoviesList = (state=initSelectedMoviesList, action) => {
     case Types.ADD_LIKED_MOVIE:
       return {
         ...state,
-        likedList: [
-          ...state.likedList,
-          action.movieId
-        ]
+        liked: {
+          idArr: [
+            ...state.liked.idArr,
+            action.movie.id
+          ],
+          idMap: {
+            ...state.liked.idMap,
+            [action.movie.id]: action.movie
+          }
+        }
       }
     case Types.ADD_DISLIKED_MOVIE:
       return {
         ...state,
-        dislikedList: [
-          ...state.dislikedList,
-          action.movieId
-        ]
+        disliked: {
+          idArr: [
+            ...state.disliked.idArr,
+            action.movie.id
+          ],
+          idMap: {
+            ...state.disliked.idMap,
+            [action.movie.id]: action.movie
+          }
+        }
       }
     default:
       return state

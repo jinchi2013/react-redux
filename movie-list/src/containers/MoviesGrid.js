@@ -4,6 +4,10 @@ import styled from 'styled-components'
 import {
   fetchTopRated
 } from '../actions'
+import {
+  moviesListByPageNumber
+} from '../reducers/topRatedMovies'
+
 import MovieBox from '../components/movieGrid/MovieBox'
 import MovieGridsControlPanel from '../components/movieGrid/MovieGridsControlPanel'
 import MoviePagination from '../components/movieGrid/MoviePagination'
@@ -17,7 +21,7 @@ const MoviesSection = styled.section`
 class MoviesGrid extends Component {
 
   componentDidMount() {
-    this.props.fetchTopRated()
+    this.props.dispatch(fetchTopRated())
   }
 
   render() {
@@ -26,7 +30,8 @@ class MoviesGrid extends Component {
       page,
       totalPages,
       totalResults,
-      arrayOfMovies
+      arrayOfMovies,
+      dispatch
     } = this.props
 
     return(
@@ -40,7 +45,7 @@ class MoviesGrid extends Component {
         <ul>
           {
             isRequesting === 0 ? 'Loading...' :
-            arrayOfMovies.map( movie => <MovieBox key={movie.id} movie={movie} /> )
+            arrayOfMovies.map( movie => <MovieBox page={page} key={movie.id} movie={movie} dispatch={dispatch} /> )
           }
         </ul>
       </MoviesSection>
@@ -56,7 +61,7 @@ const masStateToProps = state => {
         page,
         totalPages,
         totalResults,
-        results: arrayOfMovies
+        results : arrayOfMovies
       }
     }
   } = state.topRatedMovies
@@ -66,13 +71,10 @@ const masStateToProps = state => {
     page,
     totalPages,
     totalResults,
-    arrayOfMovies
+    arrayOfMovies: arrayOfMovies
   }
 }
 
 export default connect(
-  masStateToProps,
-  {
-    fetchTopRated
-  }
+  masStateToProps
 )(MoviesGrid);

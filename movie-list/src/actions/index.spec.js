@@ -83,10 +83,10 @@ describe('sync : movie actions', () => {
   it('handle selectSingleMovie action to generate ADD_LIKED_MOVIE action', ()=>{
     const initState = {}
 
-    const likeOrNot = true
+    const buttonType = 'liked'
     const movieId = 165
     const store = mockStore(initState)
-    store.dispatch(actions.addSingleMovie(movieId, likeOrNot))
+    store.dispatch(actions.addSingleMovie(movieId, buttonType))
     const action = store.getActions()
     const expectedActions = [
       {
@@ -101,10 +101,10 @@ describe('sync : movie actions', () => {
   it('handle selectSingleMovie action to generate ADD_DISLIKED_MOVIE action', ()=>{
     const initState = {}
 
-    const likeOrNot = false
+    const buttonType = 'block'
     const movieId = 165
     const store = mockStore(initState)
-    store.dispatch(actions.addSingleMovie(movieId, likeOrNot))
+    store.dispatch(actions.addSingleMovie(movieId, buttonType))
     const action = store.getActions()
     const expectedActions = [
       {

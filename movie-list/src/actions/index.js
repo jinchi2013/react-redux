@@ -27,6 +27,8 @@ export const cacheMovieResults = (camelizeJson, pageNumber) => ({
   pageNumber
 })
 
+const convertIdMapToArray = (cachedJsonByPage) => Object.keys(cachedJsonByPage.results).map( key => cachedJsonByPage.results[key] )
+
 export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
 
   dispatch(requestTopRated())
@@ -35,7 +37,13 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
   const isPageNumCached = currState.topRatedMovies.byPageNumber.hasOwnProperty(pageNumber.toString())
 
   if(isPageNumCached){
-    return dispatch( receiveTopRated(currState.topRatedMovies.byPageNumber[pageNumber]) )
+    const cachedJsonByPage = currState.topRatedMovies.byPageNumber[pageNumber]
+    const reFormattedJson = {
+      ...cachedJsonByPage,
+      results: convertIdMapToArray(cachedJsonByPage)
+    }
+
+    return dispatch( receiveTopRated(reFormattedJson) )
   }
 
   return fetch(
@@ -46,9 +54,7 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
     json => {
       const camelizeJson = camelizeKeys(json)
 
-      if(!isPageNumCached) {
-        dispatch( cacheMovieResults(camelizeJson, pageNumber))
-      }
+      dispatch( cacheMovieResults(camelizeJson, pageNumber))
 
       return dispatch(receiveTopRated(camelizeJson))
     },
@@ -106,21 +112,33 @@ export const sortArrayByField = (field=null, upOrDown) => (dispatch, getState) =
 }
 
 // actions for select one movie to be added to another list
-export const addLikeMoive = (movieId) => ({
+export const addLikedMoive = (movie, buttonType, page) => ({
   type: Types.ADD_LIKED_MOVIE,
-  movieId: movieId
+  movie: movie,
+  page: page,
+  buttonType: buttonType
 })
 
-export const addDislikedMoive = (movieId) => ({
+export const addDislikedMoive = (movie, buttonType, page) => ({
   type: Types.ADD_DISLIKED_MOVIE,
-  movieId: movieId
+  movie: movie,
+  page: page,
+  buttonType: buttonType
 })
 
-export const addSingleMovie = (movieId, likeOrNot) => dispatch => {
-  if(likeOrNot) {
-    dispatch(addLikeMoive(movieId))
-  } else {
-    dispatch(addDislikedMoive(movieId))
+export const addSingleMovie = (movie, buttonType, page) => (dispatch, getState) => {
+  const currState = getState()
+
+  switch(buttonType) {
+    case 'liked':
+      if(currState.actionsState.selectedMoviesList.liked.idMap.hasOwnProperty(movie.id.toString())){
+        return false
+      }
+      return dispatch(addLikedMoive(movie, buttonType, page))
+    case 'block':
+      return dispatch(addDislikedMoive(movie, buttonType, page))
+    default:
+      return false
   }
 }
 
