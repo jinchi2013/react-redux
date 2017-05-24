@@ -4,9 +4,6 @@ import styled from 'styled-components'
 import {
   fetchTopRated
 } from '../actions'
-import {
-  moviesListByPageNumber
-} from '../reducers/topRatedMovies'
 
 import MovieBox from '../components/movieGrid/MovieBox'
 import MovieGridsControlPanel from '../components/movieGrid/MovieGridsControlPanel'
