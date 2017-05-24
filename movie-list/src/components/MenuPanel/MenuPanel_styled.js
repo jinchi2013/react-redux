@@ -15,7 +15,7 @@ const MenuWrapper = styled.nav`
     color: #fff;
     opacity: 0.9;
     position: relative;
-    max-width: 400px;
+    max-width: 450px;
     width: 90%;
     height: 100%;
     -webkit-transform: ${props => props.isMenuOpen ? 'none' : 'translateX(-103%)'};
