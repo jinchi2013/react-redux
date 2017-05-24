@@ -97,8 +97,6 @@ const byPageNumber = (state={}, action) => {
           results: copy
         }
       }
-
-      return {...state}
     default:
       return state
   }
