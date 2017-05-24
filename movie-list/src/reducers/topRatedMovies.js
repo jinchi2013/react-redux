@@ -74,7 +74,6 @@ const byPageNumber = (state={}, action) => {
         }
       }
     case Types.ADD_LIKED_MOVIE:
-    case Types.ADD_DISLIKED_MOVIE:
       return {
         ...state,
         [action.page]: {
@@ -88,6 +87,18 @@ const byPageNumber = (state={}, action) => {
           }
         }
       }
+    case Types.ADD_DISLIKED_MOVIE:
+      const copy = {...state[action.page].results}
+      delete copy[action.movie.id]
+      return {
+        ...state,
+        [action.page]: {
+          ...state[action.page],
+          results: copy
+        }
+      }
+
+      return {...state}
     default:
       return state
   }
