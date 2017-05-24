@@ -21,7 +21,8 @@ const MainApp = styled.main`
 	width: 500px;
   height: 100%;
   text-align: center;
-
+	box-sizing: border-box;
+	
   h1 {
     font-family: cursive;
   }

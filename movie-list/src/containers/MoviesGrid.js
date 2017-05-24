@@ -41,7 +41,7 @@ class MoviesGrid extends Component {
         />
         <ul>
           {
-            isRequesting === 0 ? 'Loading...' :
+            isRequesting === 0 ? <li>Loading...</li> :
             arrayOfMovies.map( movie => <MovieBox page={page} key={movie.id} movie={movie} dispatch={dispatch} /> )
           }
         </ul>

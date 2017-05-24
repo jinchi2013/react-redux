@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { preparePosterSrcLink } from '../../reducers/index'
 import StyledHeartSvg from '../utils/Styled_heart_svg'
 import MovieActionBox from './MovieActionBox'
 
@@ -28,8 +29,6 @@ const MovieLi =  styled.li`
     text-align: justify;
   }
 `
-
-const preparePosterSrcLink = posterPath => `https://image.tmdb.org/t/p/w500${posterPath}`
 
 const MovieBox = ({ movie, dispatch, page}) => {
   return(

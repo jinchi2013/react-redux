@@ -6,3 +6,5 @@ export default combineReducers({
 	topRatedMovies,
 	actionsState
 })
+
+export const preparePosterSrcLink = posterPath => `https://image.tmdb.org/t/p/w500${posterPath}`
