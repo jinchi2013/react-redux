@@ -1,5 +1,6 @@
-import * as Types from '../actionsConst'
 import { combineReducers } from 'redux'
+import findIndex from 'lodash/findIndex'
+import * as Types from '../actionsConst'
 
 const initState = {
   isRequesting: true,
@@ -43,7 +44,7 @@ const moviesList = (state=initState, action) => {
     case Types.ADD_LIKED_MOVIE:
     case Types.ADD_DISLIKED_MOVIE:
       const copy = state.json.results.slice(0)
-      const index = copy.findIndex( ele => ele.id === action.movie.id )
+      const index = findIndex(copy, ele => ele.id === action.movie.id )
       copy[index][action.buttonType] = true
       return {
         ...state,
@@ -59,7 +60,7 @@ const moviesList = (state=initState, action) => {
 
 const byPageNumber = (state={}, action) => {
   switch(action.type) {
-    case Types.CACHE_MOVIE_RESULTS :
+    case Types.CACHE_MOVIE_RESULTS:
       return {
         ...state,
         [action.pageNumber]: {

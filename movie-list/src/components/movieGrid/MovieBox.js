@@ -6,6 +6,7 @@ import MovieActionBox from './MovieActionBox'
 
 
 const MovieLi =  styled.li`
+  display: ${props => props.blocked ? 'none' : 'block'}
   list-style-type: none;
   font-family: fantasy;
   margin-top: 20px;
@@ -32,7 +33,7 @@ const preparePosterSrcLink = posterPath => `https://image.tmdb.org/t/p/w500${pos
 
 const MovieBox = ({ movie, dispatch, page}) => {
   return(
-    <MovieLi>
+    <MovieLi blocked={movie.block}>
       <img src={preparePosterSrcLink(movie.posterPath)} alt={movie.title} />
       <MovieActionBox page={page} movie={movie} dispatch={dispatch}  />
       <h4>

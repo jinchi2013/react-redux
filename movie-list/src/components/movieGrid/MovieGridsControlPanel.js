@@ -41,6 +41,12 @@ class MovieGridsControlPanel extends Component {
 
   render() {
     const filterFields = [ 'title', 'voteCount', 'voteAverage', 'releaseDate' ]
+    const filterLabals = {
+      'title': 'Title',
+      'voteCount': 'Vote Count',
+      'voteAverage': 'Voute Average',
+      'releaseDate': 'Release Date'
+    }
     return (
       <ControlPanelWrapper>
         {
@@ -52,7 +58,7 @@ class MovieGridsControlPanel extends Component {
                 onClick={this._handleClick.bind(this)}
                 upOrDown={this.state[field]}
               >
-                {field.toUpperCase()}
+                {filterLabals[field]}
               </Button>
             )
           })

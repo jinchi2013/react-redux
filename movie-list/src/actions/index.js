@@ -40,6 +40,8 @@ export const fetchTopRated = (pageNumber=1) => (dispatch, getState) => {
       results: convertIdMapToArray(cachedJsonByPage)
     }
 
+    reFormattedJson.results.sort( (a, b) => b.voteAverage - a.voteAverage )
+
     return dispatch( receiveTopRated(reFormattedJson) )
   }
 
