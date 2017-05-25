@@ -42,7 +42,7 @@ const selectedMoviesList = (state=initSelectedMoviesList, action) => {
           idMap: {
             ...state[action.buttonType].idMap,
             [action.movie.id]: {
-              ...action.movie,
+              id: action.movie.id,
               page: action.page
             }
           }

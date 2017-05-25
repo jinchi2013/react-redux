@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import MovieBoxSimplified from '../components/movieGrid/MovieBox_simplified'
 
+import { getSelectdMovieLists } from '../reducers/topRatedMovies'
+
 const SectionWrapper = styled.section`
   ul {
     padding: 0;
@@ -25,8 +27,7 @@ const SectionWrapper = styled.section`
 class MovieListOfLiked extends Component {
   render() {
     const {
-      idArr,
-      idMap
+      likedLists
     } = this.props
 
     return (
@@ -34,9 +35,9 @@ class MovieListOfLiked extends Component {
         <h3>Movie List Of Liked</h3>
         <ul>
           {
-            idArr.length === 0 ?
+            likedLists.length === 0 ?
               <li>Your Liked List is empty</li> :
-              idArr.map( id => <MovieBoxSimplified movie={idMap[id]} key={id} />)
+              likedLists.map( movie => <MovieBoxSimplified movie={movie} key={movie.id} />)
           }
         </ul>
       </SectionWrapper>
@@ -55,8 +56,7 @@ const mapStateToProps = state => {
   } = state.actionsState
 
   return {
-    idArr,
-    idMap
+    likedLists: getSelectdMovieLists(state.topRatedMovies, idArr, idMap)
   }
 }
 

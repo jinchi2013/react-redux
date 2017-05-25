@@ -106,3 +106,9 @@ export default combineReducers({
   moviesList,
   byPageNumber
 })
+
+export const getMovieFromCache = (state, id, page) =>
+  state.byPageNumber[page].results[id]
+  
+export const getSelectdMovieLists = (state, idArr, idMap) =>
+  idArr.map( id => getMovieFromCache(state, id, idMap[id].page) )

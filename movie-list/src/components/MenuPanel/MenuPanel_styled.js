@@ -27,6 +27,11 @@ const MenuWrapper = styled.nav`
     pointer-events: auto;
     transition: ${props => props.isMenuOpen ? 'all 300ms ease-in' : 'all 130ms ease-out'};
   }
+
+  ul {
+    padding:0;
+    list-style-type: none;
+  }
 `
 
 export default MenuWrapper

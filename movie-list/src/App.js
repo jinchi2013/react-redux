@@ -16,7 +16,7 @@ const MainApp = styled.main`
 	background: hsl(49, 83%, 91%);
 	padding: 0 10px;
 	width: 500px;
-  height: 100%;
+  min-height: 100vh;
   text-align: center;
 	box-sizing: border-box;
 
@@ -30,11 +30,7 @@ class App extends Component {
   _handleClick(e){
     e.preventDefault()
 
-    const {
-      dispatch
-    } = this.props
-
-    dispatch(toggleMeun())
+    this.props.dispatch(toggleMeun())
   }
 
   render() {

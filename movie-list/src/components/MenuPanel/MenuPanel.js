@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  toggleMeun
-} from '../../actions'
-import MenuWrapper from './MenuPanel_styled'
-import {
-	Link
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+import { toggleMeun } from '../../actions'
+import MenuWrapper from './MenuPanel_styled'
 
 class MenuPanel extends Component {
   render() {
