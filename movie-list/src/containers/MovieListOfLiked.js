@@ -18,10 +18,6 @@ const SectionWrapper = styled.section`
       padding: 5px;
     }
   }
-
-  img {
-    width: 100%
-  }
 `
 
 class MovieListOfLiked extends Component {
