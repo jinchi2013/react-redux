@@ -31,7 +31,7 @@ class MovieListOfLiked extends Component {
 
     return (
       <SectionWrapper>
-        <h3>MovieListOfLiked</h3>
+        <h3>Movie List Of Liked</h3>
         <ul>
           {
             idArr.length === 0 ?
