@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
-	Route,
   withRouter
 } from 'react-router-dom'
 
@@ -10,10 +9,8 @@ import {
   toggleMeun
 } from './actions'
 
+import Routes from './Routes'
 import MenuPanel from './components/MenuPanel/MenuPanel'
-import MoviesGrid from './containers/MoviesGrid'
-import MoviesOfWatchLater from './containers/MovieListOfLiked'
-
 
 const MainApp = styled.main`
 	background: hsl(49, 83%, 91%);
@@ -22,7 +19,7 @@ const MainApp = styled.main`
   height: 100%;
   text-align: center;
 	box-sizing: border-box;
-	
+
   h1 {
     font-family: cursive;
   }
@@ -47,8 +44,7 @@ class App extends Component {
         <header>
           <h1 onClick={this._handleClick.bind(this)}>Our Top Rated Movies List</h1>
         </header>
-        <Route exact path="/" component={MoviesGrid} />
-        <Route path="/MovieListOfLiked" component={MoviesOfWatchLater} />
+				<Routes />
         <footer></footer>
       </MainApp>
     );

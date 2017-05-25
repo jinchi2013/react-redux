@@ -12,13 +12,20 @@ import {
 class MenuPanel extends Component {
   render() {
     const { isMenuOpen } = this.props.menuActionState
+    const navInfo = {
+      'Home Page': '',
+      'Movies List': 'MoviesGrid',
+      'Movie List Of Liked': 'MovieListOfLiked'
+    }
+
     return (
       <MenuWrapper isMenuOpen={isMenuOpen}>
         <div>
           <button onClick={this.props.toggleMeun}>X</button>
           <ul>
-            <li><Link to="/">Movies List</Link></li>
-            <li><Link to="/MovieListOfLiked">Movie List Of Liked</Link></li>
+            {
+              Object.keys(navInfo).map( (label, index) => <li key={index} onClick={this.props.toggleMeun}><Link to={`/${navInfo[label]}`}>{label}</Link></li> )
+            }
           </ul>
         </div>
       </MenuWrapper>
