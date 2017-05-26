@@ -31,6 +31,9 @@ const MovieLi =  styled.li`
 `
 
 const MovieBox = ({ movie, dispatch, page}) => {
+  if(movie.block) {
+    console.log(movie.id, movie.block)
+  }
   return(
     <MovieLi blocked={movie.block}>
       <img src={preparePosterSrcLink(movie.posterPath)} alt={movie.title} />

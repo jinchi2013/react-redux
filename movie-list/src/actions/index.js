@@ -144,6 +144,25 @@ export const addSingleMovie = (movie, buttonType, page) => (dispatch, getState) 
   }
 }
 
+const addDislikedMoiveFromLiked = (id, page) => ({
+  type: Types.ADD_DISLIKED_MOVIE_FROM_LIKED,
+  id: id,
+  page: page
+})
+
+export const addLikedMovieToBlock = movie => (dispatch, getState) => {
+  const {
+    id
+  } = movie
+  const {
+    [id]: {
+      page
+    }
+  } = getState().actionsState.selectedMoviesList.liked.idMap
+
+  dispatch(addDislikedMoiveFromLiked(id, page))
+}
+
 // action for toggle the menu
 export const toggleMeun = () => ({
   type: Types.TOGGLE_MEUN

@@ -74,6 +74,7 @@ const byPageNumber = (state={}, action) => {
         }
       }
     case Types.ADD_LIKED_MOVIE:
+    case Types.ADD_DISLIKED_MOVIE:
       return {
         ...state,
         [action.page]: {
@@ -87,14 +88,19 @@ const byPageNumber = (state={}, action) => {
           }
         }
       }
-    case Types.ADD_DISLIKED_MOVIE:
-      const copy = {...state[action.page].results}
-      delete copy[action.movie.id]
+    case Types.ADD_DISLIKED_MOVIE_FROM_LIKED:
       return {
         ...state,
         [action.page]: {
           ...state[action.page],
-          results: copy
+          results: {
+            ...state[action.page].results,
+            [action.id]: {
+              ...state[action.page].results[action.id],
+              block: true,
+              liked: false
+            }
+          }
         }
       }
     default:
@@ -109,6 +115,6 @@ export default combineReducers({
 
 export const getMovieFromCache = (state, id, page) =>
   state.byPageNumber[page].results[id]
-  
+
 export const getSelectdMovieLists = (state, idArr, idMap) =>
   idArr.map( id => getMovieFromCache(state, id, idMap[id].page) )

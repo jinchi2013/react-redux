@@ -8,7 +8,7 @@ class Login extends Component {
     redirectToReferrer: false
   }
 
-  login = () => {
+  login () => {
     setTimeout(()=>{
       window.localStorage.setItem('auth', 'true')
       this.setState({ redirectToReferrer: true })

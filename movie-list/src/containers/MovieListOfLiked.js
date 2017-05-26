@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import MovieBoxSimplified from '../components/movieGrid/MovieBox_simplified'
 
 import { getSelectdMovieLists } from '../reducers/topRatedMovies'
+import { addLikedMovieToBlock } from '../actions'
 
 const SectionWrapper = styled.section`
   ul {
@@ -23,7 +24,8 @@ const SectionWrapper = styled.section`
 class MovieListOfLiked extends Component {
   render() {
     const {
-      likedLists
+      likedLists,
+      addLikedMovieToBlock
     } = this.props
 
     return (
@@ -33,7 +35,7 @@ class MovieListOfLiked extends Component {
           {
             likedLists.length === 0 ?
               <li>Your Liked List is empty</li> :
-              likedLists.map( movie => <MovieBoxSimplified movie={movie} key={movie.id} />)
+              likedLists.map( movie => <MovieBoxSimplified movie={movie} key={movie.id} addLikedMovieToBlock={() => { addLikedMovieToBlock(movie) }} />)
           }
         </ul>
       </SectionWrapper>
@@ -52,8 +54,8 @@ const mapStateToProps = state => {
   } = state.actionsState
 
   return {
-    likedLists: getSelectdMovieLists(state.topRatedMovies, idArr, idMap)
+    likedLists: getSelectdMovieLists(state.topRatedMovies, idArr, idMap),
   }
 }
 
-export default connect(mapStateToProps)(MovieListOfLiked)
+export default connect(mapStateToProps, {addLikedMovieToBlock})(MovieListOfLiked)

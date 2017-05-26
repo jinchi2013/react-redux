@@ -48,6 +48,28 @@ const selectedMoviesList = (state=initSelectedMoviesList, action) => {
           }
         }
       }
+    case Types.ADD_DISLIKED_MOVIE_FROM_LIKED:
+      const copy = {...state.liked.idMap}
+      delete copy[action.id]
+      return {
+        ...state,
+        liked: {
+          idArr: state.liked.idArr.filter( id => id !== action.id ),
+          idMap: {
+            ...copy
+          }
+        },
+        block: {
+          idArr: [ ...state.block.idArr, action.id ],
+          idMap: {
+            ...state.block.idMap,
+            [action.id]: {
+              id: action.id,
+              page: action.page
+            }
+          }
+        }
+      }
     default:
       return state
   }

@@ -13,10 +13,6 @@ const MoviesSection = styled.section`
   ul {
     padding: 0;
   }
-
-  li {
-    display: block;
-  }
 `
 
 class MoviesGrid extends Component {
@@ -45,7 +41,7 @@ class MoviesGrid extends Component {
         />
         <ul>
           {
-            isRequesting === true ? <li>Loading...</li> :
+            isRequesting === true ? <li style={{"display":"block"}}>Loading...</li> :
             arrayOfMovies.map( movie => <MovieBox page={page} key={movie.id} movie={movie} dispatch={dispatch} /> )
           }
         </ul>

@@ -18,3 +18,5 @@ const Routes = () => (
 )
 
 export default Routes
+
+//<Route path="/MovieListOfBlocked" component={MovieListOfBlocked} />
