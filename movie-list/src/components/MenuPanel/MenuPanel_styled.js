@@ -11,26 +11,39 @@ const MenuWrapper = styled.nav`
   z-index: 150;
 
   div {
-    background-color: gray;
-    color: #fff;
-    opacity: 0.9;
+    background-color: #e5e5e5;
     position: relative;
     max-width: 450px;
     width: 90%;
     height: 100%;
+    padding: 20px 0 0 0;
     -webkit-transform: ${props => props.isMenuOpen ? 'none' : 'translateX(-103%)'};
             transform: ${props => props.isMenuOpen ? 'none' : 'translateX(-103%)'};
-    display: flex;
     flex-direction: column;
     will-change: transform;
     z-index: 160;
     pointer-events: auto;
     transition: ${props => props.isMenuOpen ? 'all 300ms ease-in' : 'all 130ms ease-out'};
+    box-sizing: border-box;
   }
 
   ul {
     padding:0;
     list-style-type: none;
+
+    li {
+      padding: 0 45px;
+    }
+
+    a {
+      display: block;
+      padding: 5px;
+      margin-bottom: 3px;
+      font-size: 20px;
+      text-decoration: none;
+      color: #232b2b;
+      border-bottom: solid 1px #414a4c;
+    }
   }
 `
 
