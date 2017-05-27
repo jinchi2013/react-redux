@@ -2,7 +2,6 @@ import React from 'react'
 import { preparePosterSrcLink } from '../../reducers/index'
 import styled from 'styled-components'
 
-import block from '../../images/block.png'
 import remove from '../../images/remove.png'
 import detail from '../../images/detail.png'
 
@@ -39,8 +38,8 @@ const WrapperLi = styled.li`
       background: url(${remove});
       background-size: 50px 50px;
     }
-    span[data-id='block'] {
-      background: url(${block});
+    span[data-id='addToAnotherIcon'] {
+      background: url(${ (props) => props.addToAnotherIcon });
       background-size: 50px 50px;
     }
 
@@ -61,13 +60,13 @@ const WrapperLi = styled.li`
   }
 `
 
-const MovieBoxSimplified = ({movie, addLikedMovieToBlock}) => {
+const MovieBoxSimplified = ({config:{movie, addMovieToAnotherList, addToAnotherIcon, removeMovieFromCurrentList}}) => {
   return(
-    <WrapperLi>
+    <WrapperLi addToAnotherIcon={addToAnotherIcon}>
       <img src={preparePosterSrcLink(movie.posterPath)} alt={movie.title} />
       <div>
-        <span data-id='remove'></span>
-        <span data-id='block' onClick={()=>{ addLikedMovieToBlock() }}></span>
+        <span data-id='remove' onClick={()=>{ removeMovieFromCurrentList() }}></span>
+        <span data-id='addToAnotherIcon' onClick={()=>{ addMovieToAnotherList() }}></span>
         <span data-id='view'></span>
       </div>
     </WrapperLi>

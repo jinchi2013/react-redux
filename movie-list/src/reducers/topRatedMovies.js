@@ -103,6 +103,35 @@ const byPageNumber = (state={}, action) => {
           }
         }
       }
+    case Types.ADD_LIKED_MOVIE_FROM_BLOCKED:
+      return {
+        ...state,
+        [action.page]: {
+          ...state[action.page],
+          results: {
+            ...state[action.page].results,
+            [action.id]: {
+              ...state[action.page].results[action.id],
+              block: false,
+              liked: true
+            }
+          }
+        }
+      }
+    case Types.REMOVE_MOVIE_FROM_LIST:
+      return {
+        ...state,
+        [action.page]: {
+          ...state[action.page],
+          results: {
+            ...state[action.page].results,
+            [action.id]: {
+              ...state[action.page].results[action.id],
+              [action.listType]: false
+            }
+          }
+        }
+      }
     default:
       return state
   }

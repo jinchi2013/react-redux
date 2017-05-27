@@ -6,6 +6,7 @@ const MenuWrapper = styled.nav`
   top: 0;
   width: 100%;
   height: 100%;
+  font-family: fantasy;
   overflow: hidden;
   pointer-events: ${props => props.isMenuOpen ? 'auto' : 'none'};
   z-index: 150;
@@ -25,6 +26,13 @@ const MenuWrapper = styled.nav`
     pointer-events: auto;
     transition: ${props => props.isMenuOpen ? 'all 300ms ease-in' : 'all 130ms ease-out'};
     box-sizing: border-box;
+  }
+
+  button {
+    position: absolute;
+    right: 45px;
+    width: 50px;
+    height: 25px;
   }
 
   ul {

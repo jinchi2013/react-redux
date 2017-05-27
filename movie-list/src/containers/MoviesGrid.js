@@ -42,7 +42,7 @@ class MoviesGrid extends Component {
         <ul>
           {
             isRequesting === true ? <li style={{"display":"block"}}>Loading...</li> :
-            arrayOfMovies.map( movie => <MovieBox page={page} key={movie.id} movie={movie} dispatch={dispatch} /> )
+            arrayOfMovies.map( movie =>  !movie.block ? <MovieBox page={page} key={movie.id} movie={movie} dispatch={dispatch} /> : null )
           }
         </ul>
       </MoviesSection>

@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-
 import EnhanceSimplifiedMovieBox from '../HOCs/EnhanceSimplifiedMovieBox'
 import MovieBoxSimplified from '../components/movieGrid/MovieBox_simplified'
-import block from '../images/block.png'
+import heart from '../images/heart.jpg'
 
 import { getSelectdMovieLists } from '../reducers/topRatedMovies'
 import { addMovieToAnotherList, removeMovieFromCurrentList } from '../actions'
@@ -24,30 +23,31 @@ const SectionWrapper = styled.section`
   }
 `
 
-class MovieListOfLiked extends Component {
+class MovieListOfBlocked extends Component {
   render() {
     const {
       likedLists,
-      addMovieToAnotherList, removeMovieFromCurrentList
+      addMovieToAnotherList,
+      removeMovieFromCurrentList
     } = this.props
 
     return (
       <SectionWrapper>
-        <h3>Movie List Of Liked</h3>
+        <h3>Movie List Of Blocked</h3>
         <ul>
           {
             likedLists.length === 0 ?
-              <li>Your Liked List is empty</li> :
+              <li>Your Block List is empty</li> :
               likedLists.map( movie => {
                 const config = {
                   addMovieToAnotherList: function() {
-                    addMovieToAnotherList(movie, 'liked')
+                    addMovieToAnotherList(movie, 'block')
                   },
                   removeMovieFromCurrentList: function() {
-                    removeMovieFromCurrentList(movie.id, 'liked')
+                    removeMovieFromCurrentList(movie.id, 'block')
                   },
                   movie: movie,
-                  addToAnotherIcon: block
+                  addToAnotherIcon: heart
                 }
 
                 const EnhancedMovieBox = EnhanceSimplifiedMovieBox(config)(MovieBoxSimplified)
@@ -64,7 +64,7 @@ class MovieListOfLiked extends Component {
 const mapStateToProps = state => {
   const {
     selectedMoviesList: {
-      liked : {
+      block : {
         idArr,
         idMap
       }
@@ -82,4 +82,4 @@ export default connect(
     addMovieToAnotherList,
     removeMovieFromCurrentList
   }
-)(MovieListOfLiked)
+)(MovieListOfBlocked)

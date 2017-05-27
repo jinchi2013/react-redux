@@ -11,16 +11,17 @@ class MenuPanel extends Component {
     const navInfo = {
       'Home Page': '',
       'Movies List': 'MoviesGrid',
-      'Movie List Of Liked': 'MovieListOfLiked'
+      'Movie List Of Liked': 'MovieListOfLiked',
+      'Movie List Of Blocked': 'MovieListOfBlocked'
     }
 
     return (
       <MenuWrapper isMenuOpen={isMenuOpen}>
         <div>
-          <button onClick={this.props.toggleMeun}>X</button>
+          <button onClick={this.props.toggleMeun}>Close</button>
           <ul>
             {
-              Object.keys(navInfo).map( (label, index) => <li key={index} onClick={this.props.toggleMeun}><Link to={`/${navInfo[label]}`}>{label}</Link></li> )
+              Object.keys(navInfo).map( (label, index) => <li key={label} onClick={this.props.toggleMeun}><Link to={`/${navInfo[label]}`}>{label}</Link></li> )
             }
           </ul>
         </div>

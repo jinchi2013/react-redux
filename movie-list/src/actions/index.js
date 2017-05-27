@@ -144,13 +144,13 @@ export const addSingleMovie = (movie, buttonType, page) => (dispatch, getState) 
   }
 }
 
-const addDislikedMoiveFromLiked = (id, page) => ({
-  type: Types.ADD_DISLIKED_MOVIE_FROM_LIKED,
+const createToAnotherListAction = (id, page, type) => ({
+  type: type,
   id: id,
   page: page
 })
 
-export const addLikedMovieToBlock = movie => (dispatch, getState) => {
+export const addMovieToAnotherList = (movie, listType) => (dispatch, getState) => {
   const {
     id
   } = movie
@@ -158,9 +158,28 @@ export const addLikedMovieToBlock = movie => (dispatch, getState) => {
     [id]: {
       page
     }
-  } = getState().actionsState.selectedMoviesList.liked.idMap
+  } = getState().actionsState.selectedMoviesList[listType].idMap
 
-  dispatch(addDislikedMoiveFromLiked(id, page))
+  listType === 'liked' ?
+    dispatch(createToAnotherListAction(id, page, Types.ADD_DISLIKED_MOVIE_FROM_LIKED)) :
+    dispatch(createToAnotherListAction(id, page, Types.ADD_LIKED_MOVIE_FROM_BLOCKED))
+}
+
+const removeMovieFromList = (id, page, listType) => ({
+  type: Types.REMOVE_MOVIE_FROM_LIST,
+  id: id,
+  page: page,
+  listType: listType
+})
+
+export const removeMovieFromCurrentList = (id, listType) => (dispatch, getState) => {
+  const {
+    [id]:{
+      page
+    }
+  } = getState().actionsState.selectedMoviesList[listType].idMap
+
+  dispatch(removeMovieFromList(id, page, listType))
 }
 
 // action for toggle the menu
