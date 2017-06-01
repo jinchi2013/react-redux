@@ -50,7 +50,9 @@ app.put('/updateTodo/:id', (req, res) => {
 
 })
 
-app.delete('/')
+app.delete('/Todos/:id', (req, res) => {
+  
+})
 
 
 
