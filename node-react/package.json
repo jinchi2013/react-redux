@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon lib/index.js --exec babel-node",
-    "build": "babel lib -d dist",
+    "start": "nodemon server/index.js --exec babel-node",
+    "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "mocha --compilers js:babel-register"
   },
