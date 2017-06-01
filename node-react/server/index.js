@@ -1,8 +1,15 @@
 import express from 'express'
+import level from 'level'
 
 const app = express()
+const db = level('./LevelDB')
 
 app.set('port', (process.env.PORT || 3001))
+
+// Express only serves static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
+}
 
 // enable CORS for the server
 app.use((req, res, next) => {
@@ -11,7 +18,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/api/json',  (req, res) => {
+// Get all todos
+app.get('/Todos',  (req, res) => {
   res.json({
     todos: [
       {
@@ -21,6 +29,30 @@ app.get('/api/json',  (req, res) => {
     ]
   })
 })
+
+// Get single todo by Id
+app.get('/Todos/:id',  (req, res) => {
+  res.json({
+    todos: [
+      {
+        id:1,
+        desc: 'test'
+      }
+    ]
+  })
+})
+
+app.post('/createTodo', (req, res) => {
+
+})
+
+app.put('/updateTodo/:id', (req, res) => {
+
+})
+
+app.delete('/')
+
+
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`)
