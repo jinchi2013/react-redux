@@ -1,8 +1,27 @@
-import http from 'http'
+import express from 'express'
 
-http.createServer( (req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'})
-  res.end('Hello World!\n')
-} ).listen(3001, ()=>{
-  console.log('the server is running on http://localhost:3001/')
+const app = express()
+
+app.set('port', (process.env.PORT || 3001))
+
+// enable CORS for the server
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+})
+
+app.get('/api/json',  (req, res) => {
+  res.json({
+    todos: [
+      {
+        id:1,
+        desc: 'test'
+      }
+    ]
+  })
+})
+
+app.listen(app.get('port'), () => {
+  console.log(`Find the server at: http://localhost:${app.get('port')}/`)
 })
