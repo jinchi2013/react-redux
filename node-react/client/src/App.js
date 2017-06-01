@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/json')
+    fetch('http://localhost:3001/Todos/113')
       .then( response => response.json() )
       .then( json => console.log(json) )
       .catch( err => console.log(err) )
