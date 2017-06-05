@@ -6,7 +6,6 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       todoList:[]
     }
@@ -14,6 +13,7 @@ class App extends Component {
     this.addNewTodo = this.addNewTodo.bind(this)
     this.deleteTodo = this.deleteTodo.bind(this)
     this.updateSingleTodo = this.updateSingleTodo.bind(this)
+    this.toggleFinishedMarker = this.toggleFinishedMarker.bind(this)
   }
 
   addNewTodo(todo) {
@@ -40,6 +40,14 @@ class App extends Component {
     }
   }
 
+  toggleFinishedMarker(index) {
+    const copy = this.state.todoList.slice(0)
+    copy[index].isFinished = !copy[index].isFinished
+    this.setState({
+      todoList: copy
+    })
+  }
+
   render() {
 
     const {
@@ -49,7 +57,8 @@ class App extends Component {
       addNewTodo,
       deleteTodo,
       updateSingleTodo,
-      searchTodoList
+      searchTodoList,
+      toggleFinishedMarker
     } = this
 
     return (
@@ -61,6 +70,7 @@ class App extends Component {
               todoList={todoList}
               deleteTodo={deleteTodo}
               updateSingleTodo={updateSingleTodo}
+              toggleFinishedMarker={toggleFinishedMarker}
             />
         }
         <InputTodoField addNewTodo={addNewTodo} />

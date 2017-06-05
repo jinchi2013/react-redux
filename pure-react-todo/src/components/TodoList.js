@@ -32,7 +32,8 @@ class TodoList extends Component {
     const {
       props:{
         deleteTodo,
-        updateSingleTodo
+        updateSingleTodo,
+        toggleFinishedMarker
       },
       state: {
         todoList
@@ -51,6 +52,7 @@ class TodoList extends Component {
                 todo={todo}
                 deleteTodo={()=> deleteTodo(todo.id) }
                 updateSingleTodo={updateSingleTodo(index, todo.id)}
+                toggleFinishedMarker={() => toggleFinishedMarker(index)}
               />) )
           }
         </ul>

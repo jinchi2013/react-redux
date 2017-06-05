@@ -42,7 +42,8 @@ class Todo extends Component {
     const {
       props:{
         deleteTodo,
-        todo
+        todo,
+        toggleFinishedMarker
       },
       state:{
         isEdit
@@ -56,6 +57,11 @@ class Todo extends Component {
       display: isEdit ? 'inline-block' : 'none'
     }
 
+    const contentStyle={
+      textDecoration: todo.isFinished ? 'line-through': 'none',
+      cursor: 'pointer'
+    }
+
     return (
       <li>
         <input
@@ -63,7 +69,9 @@ class Todo extends Component {
           onChange={updateContent}
           style={editMode}
         />
+        <span onClick={toggleFinishedMarker} style={contentStyle}>
           { isEdit ? null : todo.content }
+        </span>
         <button onClick={toggleEdit}>{ isEdit ? 'Cancel' : 'Edit' }</button>
         <button onClick={updateSingleTodo} style={editMode}>Save</button>
         <button onClick={deleteTodo}>Delete</button>
