@@ -7,13 +7,13 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      todoList:[]
+    }
+
     this.addNewTodo = this.addNewTodo.bind(this)
     this.deleteTodo = this.deleteTodo.bind(this)
     this.updateSingleTodo = this.updateSingleTodo.bind(this)
-  }
-
-  state= {
-    todoList:[]
   }
 
   addNewTodo(todo) {
@@ -39,6 +39,7 @@ class App extends Component {
       })
     }
   }
+
   render() {
 
     const {
@@ -47,7 +48,8 @@ class App extends Component {
       },
       addNewTodo,
       deleteTodo,
-      updateSingleTodo
+      updateSingleTodo,
+      searchTodoList
     } = this
 
     return (

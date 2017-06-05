@@ -18,7 +18,11 @@ const InputTodoField = ({addNewTodo}) => {
   }
 
   return (
-    <input name='input' onKeyUp={ handleOnKeyUp } />
+    <input
+      name='input'
+      onKeyUp={ handleOnKeyUp }
+      placeholder='Add New Todo Item...'
+    />
   )
 }
 
