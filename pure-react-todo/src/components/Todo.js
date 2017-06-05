@@ -9,14 +9,33 @@ class Todo extends Component {
     }
 
     this.updateContent = this.updateContent.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
+    this.updateSingleTodo = this.updateSingleTodo.bind(this)
   }
 
   updateContent(e) {
-    if(e.keyCode === 13) {
+    this.setState({
+      content: e.target.value
+    })
+  }
 
+  toggleEdit(e) {
+    if(this.state.isEdit) {
+      this.setState({
+        content: this.props.todo.content
+      })
     }
-    const newContent = e.target.value
+    this.setState(state => ({
+      isEdit: !state.isEdit
+    }))
+  }
 
+  updateSingleTodo(e) {
+    this.setState(state => ({
+        isEdit: !state.isEdit
+      }))
+
+    this.props.updateSingleTodo(this.state.content)
   }
 
   render() {
@@ -26,13 +45,14 @@ class Todo extends Component {
         todo
       },
       state:{
-        content,
         isEdit
       },
-      updateContent
+      updateContent,
+      toggleEdit,
+      updateSingleTodo
     } = this
 
-    const style={
+    const editMode={
       display: isEdit ? 'inline-block' : 'none'
     }
 
@@ -41,15 +61,11 @@ class Todo extends Component {
         <input
           value={this.state.content}
           onChange={updateContent}
-          style={style}
+          style={editMode}
         />
-          { todo.content }
-        <button onClick={toggle}>
-          {
-            isEdit ? 'Done' : 'Edit'
-          }
-        </button>
-        <button style={style}>Cancel</button>
+          { isEdit ? null : todo.content }
+        <button onClick={toggleEdit}>{ isEdit ? 'Cancel' : 'Edit' }</button>
+        <button onClick={updateSingleTodo} style={editMode}>Save</button>
         <button onClick={deleteTodo}>Delete</button>
       </li>
     )

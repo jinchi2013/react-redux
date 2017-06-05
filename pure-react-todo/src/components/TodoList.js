@@ -5,14 +5,21 @@ class TodoList extends Component {
   render() {
     const {
       todoList,
-      deleteTodo
+      deleteTodo,
+      updateSingleTodo
     } = this.props
 
     return (
       <section>
         <ul>
           {
-            todoList.map( todo => (<Todo key={todo.id} todo={todo} deleteTodo={()=> deleteTodo(todo.id) } />) )
+            todoList.map( (todo, index) => (
+              <Todo
+                index={index} key={todo.id}
+                todo={todo}
+                deleteTodo={()=> deleteTodo(todo.id) }
+                updateSingleTodo={updateSingleTodo(index, todo.id)}
+              />) )
           }
         </ul>
       </section>

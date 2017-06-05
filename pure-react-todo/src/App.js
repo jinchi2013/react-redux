@@ -9,6 +9,7 @@ class App extends Component {
 
     this.addNewTodo = this.addNewTodo.bind(this)
     this.deleteTodo = this.deleteTodo.bind(this)
+    this.updateSingleTodo = this.updateSingleTodo.bind(this)
   }
 
   state= {
@@ -29,6 +30,15 @@ class App extends Component {
     }))
   }
 
+  updateSingleTodo(index, id) {
+    return content=>{
+      const copy = this.state.todoList.slice(0)
+      copy[index].content = content
+      this.setState({
+        todoList: copy
+      })
+    }
+  }
   render() {
 
     const {
@@ -36,7 +46,8 @@ class App extends Component {
         todoList
       },
       addNewTodo,
-      deleteTodo
+      deleteTodo,
+      updateSingleTodo
     } = this
 
     return (
@@ -44,7 +55,11 @@ class App extends Component {
         {
           todoList.length === 0 ?
             <h2>No Todos here...</h2> :
-            <TodoList todoList={todoList} deleteTodo={deleteTodo} />
+            <TodoList
+              todoList={todoList}
+              deleteTodo={deleteTodo}
+              updateSingleTodo={updateSingleTodo}
+            />
         }
         <InputTodoField addNewTodo={addNewTodo} />
       </main>

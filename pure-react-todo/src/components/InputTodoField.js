@@ -6,9 +6,14 @@ const InputTodoField = ({addNewTodo}) => {
   function handleOnKeyUp(e) {
     if(e.keyCode === 13) {
       const content = e.target.value
-      const todo = TodoFactory(content)
-      addNewTodo(todo)
-      e.target.value = ''
+
+      if( content !== '' ) {
+        const todo = TodoFactory(content)
+        addNewTodo(todo)
+        e.target.value = ''
+      } else {
+        window.alert('Empty input!')
+      }
     }
   }
 
