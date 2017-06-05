@@ -53,7 +53,7 @@ class TodoList extends Component {
                 deleteTodo={()=> deleteTodo(todo.id) }
                 updateSingleTodo={updateSingleTodo(index, todo.id)}
                 toggleFinishedMarker={() => toggleFinishedMarker(index)}
-              />) )
+              />))
           }
         </ul>
       </section>

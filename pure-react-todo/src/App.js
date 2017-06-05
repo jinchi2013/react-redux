@@ -57,7 +57,6 @@ class App extends Component {
       addNewTodo,
       deleteTodo,
       updateSingleTodo,
-      searchTodoList,
       toggleFinishedMarker
     } = this
 
