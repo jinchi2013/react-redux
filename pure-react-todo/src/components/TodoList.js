@@ -64,7 +64,7 @@ class TodoList extends Component {
         active,
         todoList,
         taggingFilter
-      },      
+      },
       searchTodoList,
       taggingFilterTodoList
     } = this
@@ -85,7 +85,11 @@ class TodoList extends Component {
               />))
           }
         </ul>
-        <FilterTodoListBar taggingFilter={taggingFilter} taggingFilterTodoList={taggingFilterTodoList} active={active} />
+        <FilterTodoListBar
+          taggingFilter={taggingFilter}
+          taggingFilterTodoList={taggingFilterTodoList}
+          active={active}
+        />
       </section>
     )
   }

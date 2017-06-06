@@ -1,8 +1,6 @@
 import React from 'react'
 
 const TaggingButton = ({taggingFilterTodoList, tag, active}) => {
-
-  console.log(tag, active)
   const liStyle = {
     display: 'inline-block',
     margin: '0 5px 0 5px',
@@ -11,7 +9,7 @@ const TaggingButton = ({taggingFilterTodoList, tag, active}) => {
   }
 
   return(
-    <li  onClick={ () => taggingFilterTodoList(tag) } style={liStyle} >{tag}</li>
+    <li onClick={() => taggingFilterTodoList(tag)} style={liStyle} >{tag}</li>
   )
 }
 

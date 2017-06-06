@@ -14,7 +14,13 @@ class FilterTodoListBar extends Component {
     return(
       <ul>
         {
-          taggingFilter.map( (tag, index) => (<TaggingButton tag={tag} taggingFilterTodoList={taggingFilterTodoList} key={index} active={active} />) )
+          taggingFilter.map( (tag, index) => (
+            <TaggingButton
+              tag={tag}
+              taggingFilterTodoList={taggingFilterTodoList}
+              key={index}
+              active={active}
+            />))
         }
       </ul>
     )
