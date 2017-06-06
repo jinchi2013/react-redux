@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Todo from './Todo'
 import SearchTodoList from './SearchTodoList'
+import FilterTodoListBar from './FilterTodoListBar'
 import { convertCase } from '../utils'
 
 class TodoList extends Component {
@@ -9,16 +10,17 @@ class TodoList extends Component {
     super(props)
 
     this.state = {
-      todoList: this.props.todoList
+      todoList: this.props.todoList,
+      taggingFilter: ['All', 'Processing', 'Done'],
+      active: 'All'
     }
 
     this.searchTodoList = this.searchTodoList.bind(this)
+    this.taggingFilterTodoList = this.taggingFilterTodoList.bind(this)
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({
-      todoList: nextProps.todoList
-    })
+    this.taggingFilterTodoList(this.state.active, nextProps.todoList)
   }
 
   searchTodoList(string) {
@@ -28,8 +30,26 @@ class TodoList extends Component {
     }))
   }
 
-  taggingFilterTodoList(string) {
-
+  taggingFilterTodoList(string, todoList=this.props.todoList) {
+    switch (string) {
+      case 'All':
+        return this.setState({
+          todoList: todoList,
+          active: 'All'
+        })
+      case 'Processing':
+        return this.setState({
+          todoList: todoList.filter( todo => !todo.isFinished ),
+          active: 'Processing'
+        })
+      case 'Done':
+        return this.setState({
+          todoList: todoList.filter( todo => todo.isFinished ),
+          active: 'Done'
+        })
+      default:
+        return false
+    }
   }
 
   render() {
@@ -41,9 +61,12 @@ class TodoList extends Component {
         sortTheTodoListByPriority
       },
       state: {
-        todoList
-      },
-      searchTodoList
+        active,
+        todoList,
+        taggingFilter
+      },      
+      searchTodoList,
+      taggingFilterTodoList
     } = this
 
     return (
@@ -55,13 +78,14 @@ class TodoList extends Component {
               <Todo
                 index={index} key={todo.id}
                 todo={todo}
-                deleteTodo={()=> deleteTodo(todo.id) }
+                deleteTodo={()=> deleteTodo(todo.id)}
                 updateSingleTodo={updateSingleTodo(index, todo.id)}
                 toggleFinishedMarker={() => toggleFinishedMarker(index)}
                 sortTheTodoListByPriority={sortTheTodoListByPriority(index)}
               />))
           }
         </ul>
+        <FilterTodoListBar taggingFilter={taggingFilter} taggingFilterTodoList={taggingFilterTodoList} active={active} />
       </section>
     )
   }
