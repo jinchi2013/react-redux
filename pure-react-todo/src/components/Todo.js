@@ -63,7 +63,8 @@ class Todo extends Component {
       textDecoration: todo.isFinished ? 'line-through': 'none',
       cursor: 'pointer',
       color: todo.isFinished ? 'gray': 'black',
-      padding: 15,
+      padding: 8,
+      display: 'inline-block'
     }
 
     return (

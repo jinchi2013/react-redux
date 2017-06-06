@@ -12,11 +12,13 @@ class PriorityInputEachTodo extends Component {
     this.changeHandler = this.changeHandler.bind(this)
   }
 
-  handlePriorityChange(e){
+  handlePriorityChange(e) {
     if(e.keyCode === 13 || e.type === 'blur') {
       const val = this.state.priority
       if(val !== this.props.priority && val.trim() !== '') {
         this.props.sortTheTodoListByPriority(parseInt(val))
+      } else {
+        window.alert('Number is required...')
       }
     }
   }

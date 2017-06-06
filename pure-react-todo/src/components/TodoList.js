@@ -28,6 +28,10 @@ class TodoList extends Component {
     }))
   }
 
+  taggingFilterTodoList(string) {
+
+  }
+
   render() {
     const {
       props:{

@@ -58,8 +58,6 @@ class App extends Component {
         this.setState({
           todoList: copy
         })
-      } else {
-        window.alert('Number is required...')
       }
     }
   }

@@ -5,6 +5,7 @@ export default function TodoFactory(content) {
     id: uuid(),
     content: content,
     isFinished: false,
-    priority: 1
+    priority: 1,
+    tagging: []
   }
 }
