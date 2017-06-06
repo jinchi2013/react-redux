@@ -7,13 +7,13 @@ const InputTodoField = ({addNewTodo}) => {
     if(e.keyCode === 13) {
       const content = e.target.value
 
-      if( content !== '' ) {
+      if( content.trim() !== '' ) {
         const todo = TodoFactory(content)
         addNewTodo(todo)
-        e.target.value = ''
       } else {
         window.alert('Empty input!')
       }
+      e.target.value = ''
     }
   }
 

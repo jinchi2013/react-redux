@@ -14,6 +14,7 @@ class App extends Component {
     this.deleteTodo = this.deleteTodo.bind(this)
     this.updateSingleTodo = this.updateSingleTodo.bind(this)
     this.toggleFinishedMarker = this.toggleFinishedMarker.bind(this)
+    this.sortTheTodoListByPriority = this.sortTheTodoListByPriority.bind(this)
   }
 
   addNewTodo(todo) {
@@ -48,6 +49,21 @@ class App extends Component {
     })
   }
 
+  sortTheTodoListByPriority(index) {
+    return priority => {
+      if(!isNaN(priority)) {
+        const copy = this.state.todoList.slice(0)
+        copy[index].priority = priority
+        copy.sort( (a, b)=> a.priority - b.priority )
+        this.setState({
+          todoList: copy
+        })
+      } else {
+        window.alert('Number is required...')
+      }
+    }
+  }
+
   render() {
 
     const {
@@ -57,7 +73,8 @@ class App extends Component {
       addNewTodo,
       deleteTodo,
       updateSingleTodo,
-      toggleFinishedMarker
+      toggleFinishedMarker,
+      sortTheTodoListByPriority
     } = this
 
     return (
@@ -70,6 +87,7 @@ class App extends Component {
               deleteTodo={deleteTodo}
               updateSingleTodo={updateSingleTodo}
               toggleFinishedMarker={toggleFinishedMarker}
+              sortTheTodoListByPriority={sortTheTodoListByPriority}
             />
         }
         <InputTodoField addNewTodo={addNewTodo} />

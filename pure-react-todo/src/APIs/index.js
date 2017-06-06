@@ -4,6 +4,7 @@ export default function TodoFactory(content) {
   return {
     id: uuid(),
     content: content,
-    isFinished: false
+    isFinished: false,
+    priority: 1
   }
 }

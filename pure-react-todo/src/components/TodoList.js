@@ -33,7 +33,8 @@ class TodoList extends Component {
       props:{
         deleteTodo,
         updateSingleTodo,
-        toggleFinishedMarker
+        toggleFinishedMarker,
+        sortTheTodoListByPriority
       },
       state: {
         todoList
@@ -53,6 +54,7 @@ class TodoList extends Component {
                 deleteTodo={()=> deleteTodo(todo.id) }
                 updateSingleTodo={updateSingleTodo(index, todo.id)}
                 toggleFinishedMarker={() => toggleFinishedMarker(index)}
+                sortTheTodoListByPriority={sortTheTodoListByPriority(index)}
               />))
           }
         </ul>

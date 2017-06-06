@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PriorityInputEachTodo from './PriorityInputEachTodo'
 
 class Todo extends Component {
   constructor(props) {
@@ -43,7 +44,8 @@ class Todo extends Component {
       props:{
         deleteTodo,
         todo,
-        toggleFinishedMarker
+        toggleFinishedMarker,
+        sortTheTodoListByPriority
       },
       state:{
         isEdit
@@ -59,11 +61,14 @@ class Todo extends Component {
 
     const contentStyle={
       textDecoration: todo.isFinished ? 'line-through': 'none',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: todo.isFinished ? 'gray': 'black',
+      padding: 15,
     }
 
     return (
       <li>
+        <PriorityInputEachTodo sortTheTodoListByPriority={sortTheTodoListByPriority} priority={todo.priority} />
         <input
           value={this.state.content}
           onChange={updateContent}
