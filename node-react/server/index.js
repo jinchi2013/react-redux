@@ -32,14 +32,6 @@ app.get('/Todos',  (req, res) => {
 
 // Get single todo by Id
 app.get('/Todos/:id',  (req, res) => {
-  res.json({
-    todos: [
-      {
-        id:1,
-        desc: 'test'
-      }
-    ]
-  })
 })
 
 app.post('/createTodo', (req, res) => {
@@ -51,7 +43,7 @@ app.put('/updateTodo/:id', (req, res) => {
 })
 
 app.delete('/Todos/:id', (req, res) => {
-  
+
 })
 
 
