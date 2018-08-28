@@ -1,3 +1,5 @@
+/* this is just for demo*/
+
 /**
 	Async middleware like redux-thunk or redux-promise wraps the store's dispatch() method and allows you to dispatch something other than actions,
 	For example function(for thunk) or Promise(for redux-promise).
